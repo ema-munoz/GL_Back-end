@@ -1,3 +1,4 @@
+//solo configurar aqui el password de la BD
 import "reflect-metadata";
 import { DataSource } from "typeorm";
 
@@ -6,7 +7,7 @@ const config = new DataSource({
 	host: "localhost",
 	port: 5432,
 	username: "postgres",
-	password: "...",
+	password: "Anil1309",
 	database: "Gestion_Laboratorios",
 	synchronize: false,
 	logging: false,
