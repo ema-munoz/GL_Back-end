@@ -2,10 +2,10 @@ import { Module } from "@nestjs/common";
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
 import { TypeOrmModule } from "@nestjs/typeorm";
-import { LaboratoryController } from './controllers/laboratory.controller';
-import { LaboratoryService } from './services/laboratory.service';
-import { TeacherController } from './controllers/teacher.controller';
-import { TeacherService } from './services/teacher.service';
+import { LaboratoryController } from "./controllers/laboratory.controller";
+import { LaboratoryService } from "./services/laboratory.service";
+import { TeacherController } from "./controllers/teacher.controller";
+import { TeacherService } from "./services/teacher.service";
 
 @Module({
 	imports: [
