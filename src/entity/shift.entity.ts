@@ -1,19 +1,16 @@
 import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 
 @Entity()
-export class User {
+export class Shift {
 	@PrimaryGeneratedColumn()
 	id: number;
 
 	@Column()
-	firstName: string;
+	name: string;
 
 	@Column()
-	lastName: string;
+	checkTime: string;
 
 	@Column()
-	age: number;
-
-	@Column()
-	adress: string;
+	departureTime: string;
 }
