@@ -1,18 +1,18 @@
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
-export class Laboratorio{
-    @PrimaryGeneratedColumn()
-    id:number;
+export class Laboratorio {
+	@PrimaryGeneratedColumn()
+	id: number;
 
-    @Column()
-    name:string;
+	@Column()
+	name: string;
 
-    @Column()
-    capacity:number
+	@Column()
+	capacity: number;
 
-    @Column()
-    description:string
+	@Column()
+	description: string;
 
-    //TODO: fk de estadoLaboratorio
+	//TODO: fk de estadoLaboratorio
 }

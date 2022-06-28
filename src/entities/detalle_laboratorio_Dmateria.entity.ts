@@ -5,7 +5,7 @@ export class User {
 	@PrimaryGeneratedColumn()
 	id: number;
 
-    //TODO: aqui van las fk de laboratorio y Dmateria
+	//TODO: aqui van las fk de laboratorio y Dmateria
 	// @Column()
 	// firstName: string;
 

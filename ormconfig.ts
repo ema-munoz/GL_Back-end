@@ -7,7 +7,7 @@ const config = new DataSource({
 	host: "localhost",
 	port: 5432,
 	username: "postgres",
-	password: "Anil1309",
+	password: "Barbarita19@2021@",
 	database: "Gestion_Laboratorios",
 	synchronize: false,
 	logging: false,
