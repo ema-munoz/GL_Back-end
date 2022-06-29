@@ -1,11 +1,23 @@
-import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, ParseIntPipe, Post, Put, Query } from '@nestjs/common';
-import { CreateCareerDto } from 'src/Dtos/career/create-career.dto';
-import { UpdateCareerDto } from 'src/Dtos/career/update-career.dto';
-import { CareerService } from 'src/services/career.service';
+import {
+	Body,
+	Controller,
+	Delete,
+	Get,
+	HttpCode,
+	HttpStatus,
+	Param,
+	ParseIntPipe,
+	Post,
+	Put,
+	Query,
+} from "@nestjs/common";
+import { CreateCareerDto } from "src/Dtos/career/create-career.dto";
+import { UpdateCareerDto } from "src/Dtos/career/update-career.dto";
+import { CareerService } from "src/services/career.service";
 
-@Controller('career')
+@Controller("career")
 export class CareerController {
-    constructor(private careerService: CareerService) {}
+	constructor(private careerService: CareerService) {}
 
 	@Get("")
 	@HttpCode(HttpStatus.OK)
@@ -23,7 +35,7 @@ export class CareerController {
 	filter(@Query("search") search: string) {
 		return {
 			data: search,
-			message: 'Resultado de busqueda filtrada',
+			message: "Resultado de busqueda filtrada",
 		};
 	}
 
@@ -70,4 +82,3 @@ export class CareerController {
 		};
 	}
 }
-

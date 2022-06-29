@@ -22,7 +22,6 @@ export class TeacherController {
 	@HttpCode(HttpStatus.OK)
 	index(@Query() params: any) {
 		const response = this.teacherService.getAll();
-
 		return {
 			data: response,
 			message: `index`,

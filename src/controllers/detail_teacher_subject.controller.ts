@@ -1,11 +1,25 @@
-import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, ParseIntPipe, Post, Put, Query } from '@nestjs/common';
-import { CreateDetailTeacherSubjectDto } from 'src/Dtos/detail_teacher_subject/create-detail_teacher_subject.dto';
-import { UpdateDetailTeacherSubject } from 'src/Dtos/detail_teacher_subject/update-detail_teacher_subject.dto';
-import { DetailTeacherSubjectService } from 'src/services/detail_teacher_subject.service';
+import {
+	Body,
+	Controller,
+	Delete,
+	Get,
+	HttpCode,
+	HttpStatus,
+	Param,
+	ParseIntPipe,
+	Post,
+	Put,
+	Query,
+} from "@nestjs/common";
+import { CreateDetailTeacherSubjectDto } from "src/Dtos/detail_teacher_subject/create-detail_teacher_subject.dto";
+import { UpdateDetailTeacherSubject } from "src/Dtos/detail_teacher_subject/update-detail_teacher_subject.dto";
+import { DetailTeacherSubjectService } from "src/services/detail_teacher_subject.service";
 
-@Controller('detail-teacher-subject')
+@Controller("detail-teacher-subject")
 export class DetailTeacherSubjectController {
-    constructor(private detailTeacherSubjectService: DetailTeacherSubjectService) {}
+	constructor(
+		private detailTeacherSubjectService: DetailTeacherSubjectService
+	) {}
 
 	@Get("")
 	@HttpCode(HttpStatus.OK)
@@ -23,7 +37,7 @@ export class DetailTeacherSubjectController {
 	filter(@Query("search") search: string) {
 		return {
 			data: search,
-			message: 'Resultado de busqueda filtrada',
+			message: "Resultado de busqueda filtrada",
 		};
 	}
 

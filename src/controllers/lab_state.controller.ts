@@ -15,8 +15,8 @@ import { LabStateService } from "src/services/lab_state.service";
 import { CreateLabStateDto } from "src/Dtos/lab_state/create-lab_state.dto";
 import { UpdateLabStateDto } from "src/Dtos/lab_state/update-lab_state.dto";
 
-@Controller("grade")
-export class GradeController {
+@Controller("labState")
+export class LabStateController {
 	constructor(private labStateService: LabStateService) {}
 	@Get("")
 	@HttpCode(HttpStatus.OK)

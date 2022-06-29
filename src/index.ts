@@ -1,7 +1,6 @@
 // import { AppDataSource } from "./data-source.js";
 // import { Teacher } from "./entities/teacher.entity";
 
-
 // AppDataSource.initialize()
 // 	.then(async () => {
 // 		console.log("Inserting a new teacher into the database...");

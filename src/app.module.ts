@@ -18,10 +18,10 @@ import { ParallelController } from "./controllers/parallel.controller";
 import { GradeService } from "./services/grade.service";
 import { LabStateService } from "./services/lab_state.service";
 import { ParallelService } from "./services/parallel.service";
-import { CareerController } from './controllers/career.controller';
-import { CareerService } from './services/career.service';
-import { DetailTeacherSubjectController } from './controllers/detail_teacher_subject.controller';
-import { DetailTeacherSubjectService } from './services/detail_teacher_subject.service';
+import { CareerController } from "./controllers/career.controller";
+import { CareerService } from "./services/career.service";
+import { DetailTeacherSubjectController } from "./controllers/detail_teacher_subject.controller";
+import { DetailTeacherSubjectService } from "./services/detail_teacher_subject.service";
 
 @Module({
 	imports: [
@@ -64,4 +64,4 @@ import { DetailTeacherSubjectService } from './services/detail_teacher_subject.s
 		DetailTeacherSubjectService,
 	],
 })
-export class AppModule { }
+export class AppModule {}

@@ -1,10 +1,10 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
-import { CreateCareerDto } from 'src/Dtos/career/create-career.dto';
-import { UpdateCareerDto } from 'src/Dtos/career/update-career.dto';
+import { Injectable, NotFoundException } from "@nestjs/common";
+import { CreateCareerDto } from "src/Dtos/career/create-career.dto";
+import { UpdateCareerDto } from "src/Dtos/career/update-career.dto";
 
 @Injectable()
 export class CareerService {
-    careers: any[] = [];
+	careers: any[] = [];
 	id = 1;
 
 	getAll() {
@@ -28,7 +28,7 @@ export class CareerService {
 	create(payload: CreateCareerDto) {
 		const data = {
 			id: this.id,
-			name: payload.name
+			name: payload.name,
 		};
 		this.id++;
 		this.careers.push(data);
