@@ -6,4 +6,4 @@ export class CreateGradeDto {
 	readonly numberStudents: number;
 }
 
-export class UpdateGradeDto extends PartialType(CreateGradeDto) {}
+

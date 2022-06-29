@@ -6,4 +6,4 @@ export class CreateParallelDto {
 	readonly name: string;
 }
 
-export class UpdateParallelDto extends PartialType(CreateParallelDto) {}
+
