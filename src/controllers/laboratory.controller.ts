@@ -2,6 +2,7 @@ import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, ParseIntPip
 import { CreateLaboratoryDto } from 'src/Dto\'s/laboratory/create-laboratory.dto';
 import { UpdateLaboratoryDto } from 'src/Dto\'s/laboratory/update-laboratory.dto';
 import { LaboratoryService } from 'src/services/laboratory.service';
+import { Controller } from "@nestjs/common";
 
 @Controller('laboratory')
 export class LaboratoryController {
