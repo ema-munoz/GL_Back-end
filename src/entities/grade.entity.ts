@@ -11,5 +11,5 @@ export class Curso {
 	//fk_paralelo
 
 	@Column()
-	cantidadEstudiantes: number;
+	numberStudents: number;
 }

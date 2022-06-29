@@ -10,6 +10,12 @@ import { ShiftController } from "./controllers/shift.controller";
 import { ShiftService } from "./services/shift.service";
 import { SemesterController } from "./controllers/semester.controller";
 import { SemesterService } from "./services/semester.service";
+import { GradeController } from './controllers/grade.controller';
+import { LabStateController } from './controllers/lab_state.controller';
+import { ParallelController } from './controllers/parallel.controller';
+import { GradeService } from './services/grade.service';
+import { LabStateService } from './services/lab_state.service';
+import { ParallelService } from './services/parallel.service';
 
 @Module({
 	imports: [
@@ -30,6 +36,9 @@ import { SemesterService } from "./services/semester.service";
 		TeacherController,
 		ShiftController,
 		SemesterController,
+		GradeController,
+		LabStateController,
+		ParallelController,
 	],
 	providers: [
 		AppService,
@@ -37,6 +46,9 @@ import { SemesterService } from "./services/semester.service";
 		TeacherService,
 		ShiftService,
 		SemesterService,
+		GradeService,
+		LabStateService,
+		ParallelService,
 	],
 })
 export class AppModule {}

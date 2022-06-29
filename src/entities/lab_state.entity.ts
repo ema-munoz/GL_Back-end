@@ -6,8 +6,8 @@ export class EstadoLaboratorio {
 	id: number;
 
 	@Column()
-	estado: string;
+	state: string;
 
 	@Column()
-	observaciones: string;
+	observations: string;
 }
