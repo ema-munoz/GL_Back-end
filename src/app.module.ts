@@ -2,6 +2,12 @@ import { Module } from "@nestjs/common";
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
 import { TypeOrmModule } from "@nestjs/typeorm";
+import { LaboratoryController } from './controllers/laboratory/laboratory.controller';
+import { LaboratoryController } from './controllers/laboratory.controller';
+import { LaboratoryService } from './services/laboratory.service';
+import { SubjectController } from './controllers/subject/subject.controller';
+import { SubjectController } from './controllers/subject.controller';
+import { SubjectService } from './services/subject.service';
 import { LaboratoryController } from "./controllers/laboratory.controller";
 import { LaboratoryService } from "./services/laboratory.service";
 import { TeacherController } from "./controllers/teacher.controller";
@@ -30,6 +36,8 @@ import { ParallelService } from "./services/parallel.service";
 			synchronize: true,
 		}),
 	],
+	controllers: [AppController, LaboratoryController, SubjectController],
+	providers: [AppService, LaboratoryService, SubjectService],
 	controllers: [
 		AppController,
 		LaboratoryController,
