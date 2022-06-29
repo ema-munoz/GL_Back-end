@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { CreateLaboratoryDto } from 'src/Dto\'s/laboratory/create-laboratory.dto';
-import { UpdateLaboratoryDto } from 'src/Dto\'s/laboratory/update-laboratory.dto';
+import { CreateLaboratoryDto } from 'src/Dtos/laboratory/create-laboratory.dto';
+import { UpdateLaboratoryDto } from 'src/Dtos/laboratory/update-laboratory.dto';
 
 @Injectable()
 export class LaboratoryService {
