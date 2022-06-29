@@ -10,7 +10,7 @@ export class DetailTeacherSubject {
 	//fk_curso
 
 	@Column()
-	date: string;
+	date: Date;
 	@Column()
 	day: string;
 	@Column()
