@@ -5,5 +5,3 @@ export class CreateParallelDto {
 	@IsString()
 	readonly name: string;
 }
-
-

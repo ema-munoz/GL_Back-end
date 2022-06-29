@@ -14,5 +14,3 @@ export class CreateTeacherDto {
 	@IsNumber()
 	readonly phone: number;
 }
-
-export class UpdateTeacherDto extends PartialType(CreateTeacherDto) {}

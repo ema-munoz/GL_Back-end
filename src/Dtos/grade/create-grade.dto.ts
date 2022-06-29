@@ -5,5 +5,3 @@ export class CreateGradeDto {
 	@IsNumber()
 	readonly numberStudents: number;
 }
-
-

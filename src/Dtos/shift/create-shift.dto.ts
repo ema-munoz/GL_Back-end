@@ -11,5 +11,3 @@ export class CreateShiftDto {
 	@IsString()
 	readonly departureTime: number;
 }
-
-export class UpdateShiftDto extends PartialType(CreateShiftDto) {}

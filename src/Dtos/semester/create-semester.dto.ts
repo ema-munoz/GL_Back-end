@@ -5,5 +5,3 @@ export class CreateSemesterDto {
 	@IsString()
 	readonly name: string;
 }
-
-export class UpdateSemesterDto extends PartialType(CreateSemesterDto) {}
