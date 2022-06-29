@@ -1,6 +1,6 @@
 import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, ParseIntPipe, Post, Put, Query } from '@nestjs/common';
-import { CreateSubjectDto } from 'src/Dto\'s/subject/create-subject.dto';
-import { UpdateSubjectDto } from 'src/Dto\'s/subject/update-subject.dto';
+import { CreateSubjectDto } from 'src/Dtos/subject/create-subject.dto';
+import { UpdateSubjectDto } from 'src/Dtos/subject/update-subject.dto';
 import { SubjectService } from 'src/services/subject.service';
 
 @Controller('subject')
