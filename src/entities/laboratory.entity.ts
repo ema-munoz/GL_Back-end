@@ -1,7 +1,6 @@
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
-
 @Entity()
-export class Laboratorio{
+export class LaboratoryEntity {
     @PrimaryGeneratedColumn()
     id:number;
 
@@ -13,6 +12,6 @@ export class Laboratorio{
 
     @Column()
     description:string
-
+    
     //TODO: fk de estadoLaboratorio
 }

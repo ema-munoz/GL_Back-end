@@ -5,6 +5,9 @@ import { TypeOrmModule } from "@nestjs/typeorm";
 import { LaboratoryController } from './controllers/laboratory/laboratory.controller';
 import { LaboratoryController } from './controllers/laboratory.controller';
 import { LaboratoryService } from './services/laboratory.service';
+import { SubjectController } from './controllers/subject/subject.controller';
+import { SubjectController } from './controllers/subject.controller';
+import { SubjectService } from './services/subject.service';
 
 @Module({
 	imports: [
@@ -19,7 +22,7 @@ import { LaboratoryService } from './services/laboratory.service';
 			synchronize: true,
 		}),
 	],
-	controllers: [AppController, LaboratoryController],
-	providers: [AppService, LaboratoryService],
+	controllers: [AppController, LaboratoryController, SubjectController],
+	providers: [AppService, LaboratoryService, SubjectService],
 })
 export class AppModule {}

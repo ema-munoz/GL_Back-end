@@ -1,16 +1,16 @@
 import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, ParseIntPipe, Post, Put, Query } from '@nestjs/common';
-import { CreateLaboratoryDto } from 'src/Dto\'s/laboratory/create-laboratory.dto';
-import { UpdateLaboratoryDto } from 'src/Dto\'s/laboratory/update-laboratory.dto';
-import { LaboratoryService } from 'src/services/laboratory.service';
+import { CreateSubjectDto } from 'src/Dto\'s/subject/create-subject.dto';
+import { UpdateSubjectDto } from 'src/Dto\'s/subject/update-subject.dto';
+import { SubjectService } from 'src/services/subject.service';
 
-@Controller('laboratory')
-export class LaboratoryController {
-    constructor(private laboratoryService: LaboratoryService){}
+@Controller('subject')
+export class SubjectController {
+    constructor(private subjectService: SubjectService){}
 
     @Get('')
     @HttpCode(HttpStatus.OK)
     index(@Query() params:any){
-        const response = this.laboratoryService.getAll();
+        const response = this.subjectService.getAll();
 
         return {
             data: response,
@@ -30,7 +30,7 @@ export class LaboratoryController {
     @Get(':id')
     @HttpCode(HttpStatus.OK)
     show(@Param('id', ParseIntPipe) id: number){
-        const response = this.laboratoryService.getOne(id);
+        const response = this.subjectService.getOne(id);
         return{
             data: response,
             message: `show`,
@@ -39,8 +39,8 @@ export class LaboratoryController {
 
     @Post('')
     @HttpCode(HttpStatus.CREATED)
-    store(@Body() payload: CreateLaboratoryDto){
-        const response = this.laboratoryService.create(payload);
+    store(@Body() payload: CreateSubjectDto){
+        const response = this.subjectService.create(payload);
         return{
             data: response,
             message: `created`,
@@ -51,9 +51,9 @@ export class LaboratoryController {
     @HttpCode(HttpStatus.CREATED)
     update(
         @Param('id', ParseIntPipe) id: number,
-        @Body() payload: UpdateLaboratoryDto,
+        @Body() payload: UpdateSubjectDto,
     ){
-        const response = this.laboratoryService.update(id, payload);
+        const response = this.subjectService.update(id, payload);
         return{
             data: response,
             message: `update`,
@@ -63,7 +63,7 @@ export class LaboratoryController {
     @Delete(':id')
     @HttpCode(HttpStatus.CREATED)
     destroy(@Param('id', ParseIntPipe) id:number){
-        const response = this.laboratoryService.delete(id);
+        const response = this.subjectService.delete(id);
         return{
             data: response,
             message: `deleted`,
