@@ -22,6 +22,9 @@ import { CareerController } from './controllers/career.controller';
 import { CareerService } from './services/career.service';
 import { DetailTeacherSubjectController } from './controllers/detail_teacher_subject.controller';
 import { DetailTeacherSubjectService } from './services/detail_teacher_subject.service';
+import { DetailLabTsubjectController } from './controllers/detail-lab-tsubject.controller';
+import { DetailLabTsubjectService } from './services/detail-lab-tsubject.service';
+
 
 @Module({
 	imports: [
@@ -49,6 +52,7 @@ import { DetailTeacherSubjectService } from './services/detail_teacher_subject.s
 		SubjectController,
 		CareerController,
 		DetailTeacherSubjectController,
+		DetailLabTsubjectController,
 	],
 	providers: [
 		AppService,
@@ -62,6 +66,7 @@ import { DetailTeacherSubjectService } from './services/detail_teacher_subject.s
 		SubjectService,
 		CareerService,
 		DetailTeacherSubjectService,
+		DetailLabTsubjectService,
 	],
 })
 export class AppModule { }
