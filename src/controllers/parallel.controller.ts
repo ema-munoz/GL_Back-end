@@ -1,4 +1,4 @@
-import { Controller } from '@nestjs/common';
+import { Controller } from "@nestjs/common";
 
-@Controller('parallel')
+@Controller("parallel")
 export class ParallelController {}

@@ -12,4 +12,4 @@ export class CreateShiftDto {
 	readonly departureTime: number;
 }
 
-export class UpdateTeacherDto extends PartialType(CreateShiftDto) {}
+export class UpdateShiftDto extends PartialType(CreateShiftDto) {}

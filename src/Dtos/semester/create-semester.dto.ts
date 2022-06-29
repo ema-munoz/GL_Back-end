@@ -6,4 +6,4 @@ export class CreateSemesterDto {
 	readonly name: string;
 }
 
-export class UpdateTeacherDto extends PartialType(CreateSemesterDto) {}
+export class UpdateSemesterDto extends PartialType(CreateSemesterDto) {}
