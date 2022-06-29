@@ -2,14 +2,10 @@ import { Module } from "@nestjs/common";
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
 import { TypeOrmModule } from "@nestjs/typeorm";
-import { LaboratoryController } from "./controllers/laboratory/laboratory.controller";
 import { LaboratoryController } from "./controllers/laboratory.controller";
 import { LaboratoryService } from "./services/laboratory.service";
-import { SubjectController } from "./controllers/subject/subject.controller";
 import { SubjectController } from "./controllers/subject.controller";
 import { SubjectService } from "./services/subject.service";
-import { LaboratoryController } from "./controllers/laboratory.controller";
-import { LaboratoryService } from "./services/laboratory.service";
 import { TeacherController } from "./controllers/teacher.controller";
 import { TeacherService } from "./services/teacher.service";
 import { ShiftController } from "./controllers/shift.controller";
@@ -22,22 +18,25 @@ import { ParallelController } from "./controllers/parallel.controller";
 import { GradeService } from "./services/grade.service";
 import { LabStateService } from "./services/lab_state.service";
 import { ParallelService } from "./services/parallel.service";
+import { CareerController } from './controllers/career.controller';
+import { CareerService } from './services/career.service';
+import { DetailTeacherSubjectController } from './controllers/detail_teacher_subject.controller';
+import { DetailTeacherSubjectService } from './services/detail_teacher_subject.service';
 
 @Module({
 	imports: [
-		TypeOrmModule.forRoot({
-			type: "postgres",
-			host: "localhost",
-			port: 5432,
-			username: "postgres",
-			password: "...",
-			database: "Gestion_Laboratorios",
-			entities: [],
-			synchronize: true,
-		}),
+		// TypeOrmModule.forRoot({
+		// 	type: "postgres",
+		// 	host: "localhost",
+		// 	port: 5432,
+		// 	username: "postgres",
+		// 	password: "...",
+		// 	database: "Gestion_Laboratorios",
+		// 	entities: [],
+		// 	synchronize: true,
+		// }),
 	],
-	controllers: [AppController, LaboratoryController, SubjectController],
-	providers: [AppService, LaboratoryService, SubjectService],
+
 	controllers: [
 		AppController,
 		LaboratoryController,
@@ -47,6 +46,9 @@ import { ParallelService } from "./services/parallel.service";
 		GradeController,
 		LabStateController,
 		ParallelController,
+		SubjectController,
+		CareerController,
+		DetailTeacherSubjectController,
 	],
 	providers: [
 		AppService,
@@ -57,6 +59,9 @@ import { ParallelService } from "./services/parallel.service";
 		GradeService,
 		LabStateService,
 		ParallelService,
+		SubjectService,
+		CareerService,
+		DetailTeacherSubjectService,
 	],
 })
-export class AppModule {}
+export class AppModule { }

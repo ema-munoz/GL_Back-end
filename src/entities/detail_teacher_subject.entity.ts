@@ -14,7 +14,7 @@ export class DetailTeacherSubject {
 	@Column()
 	day: string;
 	@Column()
-	hour_start: string;
+	hourStart: string;
 	@Column()
-	hours_finish: string;
+	hourFinish: string;
 }

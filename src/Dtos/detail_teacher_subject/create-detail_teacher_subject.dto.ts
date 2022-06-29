@@ -1,13 +1,9 @@
-import {IsDate, IsMilitaryTime, IsString, MaxLength, MinLength } from "class-validator";
+import {IsDate, IsDateString, IsMilitaryTime, IsString, MaxLength, MinLength } from "class-validator";
 
 export class CreateDetailTeacherSubjectDto {
-	@IsString()
-	@MinLength(5)
-	@MaxLength(20)
-	readonly name: string;
 
-    @IsDate()
-	readonly date: Date;
+	@IsDateString()
+	readonly date: string;
 
 	@IsString()
 	@MinLength(5)
@@ -16,10 +12,10 @@ export class CreateDetailTeacherSubjectDto {
 
 	@IsString()
     @IsMilitaryTime()
-    readonly hour_start: string;
+    readonly hourStart: string;
 	
 
 	@IsString()
     @IsMilitaryTime()
-    readonly hours_finish: string;
+    readonly hourFinish: string;
 }
