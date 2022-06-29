@@ -1,5 +1,5 @@
 import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, ParseIntPipe, Post, Put, Query } from '@nestjs/common';
-import { CreateLaboratoryDto } from 'src/Dto\'s/laboratory/create-laboratory.dto';
+import { CreateLaboratoryDto } from 'src/Dtos/laboratory/create-laboratory.dto';
 import { UpdateLaboratoryDto } from 'src/Dto\'s/laboratory/update-laboratory.dto';
 import { LaboratoryService } from 'src/services/laboratory.service';
 import { Controller } from "@nestjs/common";
