@@ -9,7 +9,7 @@
 // 		teacher.names = "Timber";
 // 		teacher.lastNames = "Saw";
 // 		teacher.institutionalMail = "t.saw@yavirac.edu.ec";
-// 		teacher.phone = 0987654321;
+// 		teacher.cellPhone = 0987654321;
 // 		await AppDataSource.manager.save(teacher);
 // 		console.log("Saved a new teacher with id: " + teacher.id);
 
