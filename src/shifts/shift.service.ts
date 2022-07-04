@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException } from "@nestjs/common";
 import { CreateShiftDto } from "src/Dtos/shift/create-shift.dto";
-import { UpdateShiftDto } from "src/Dtos/shift/update-shift.dto";
+import { UpdateShiftDto } from "src/shifts/Dtos/update-shift.dto";
 
 @Injectable()
 export class ShiftService {

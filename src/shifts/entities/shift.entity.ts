@@ -1,7 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 
 @Entity()
-export class Shift {
+export class ShiftEntity {
 	@PrimaryGeneratedColumn()
 	id: number;
 

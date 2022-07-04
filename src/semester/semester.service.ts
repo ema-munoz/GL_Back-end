@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException } from "@nestjs/common";
 import { CreateSemesterDto } from "src/Dtos/semester/create-semester.dto";
-import { UpdateSemesterDto } from "src/Dtos/semester/update-semester.dto";
+import { UpdateSemesterDto } from "src/semester/Dtos/update-semester.dto";
 
 @Injectable()
 export class SemesterService {

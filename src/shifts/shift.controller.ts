@@ -11,18 +11,18 @@ import {
 	Put,
 	Query,
 } from "@nestjs/common";
-import { CreateDetailLabTsubjectDto } from "src/detail_lab_tsubject/Dtos/create-detail-tsubject.dto";
-import { UpdateDetailLabTsubjectDto } from "src/detail_lab_tsubject/Dtos/update-detail-tsubject.dto";
-import { DetailLabTsubjectService } from "src/services/detail-lab-tsubject.service";
+import { CreateShiftDto } from "src/Dtos/shift/create-shift.dto";
+import { UpdateShiftDto } from "src/shifts/Dtos/update-shift.dto";
+import { ShiftService } from "src/shifts/shift.service";
 
-@Controller("detail-lab-tsubject")
-export class DetailLabTsubjectController {
-	constructor(private detailLabTsubjectService: DetailLabTsubjectService) {}
+@Controller("shift")
+export class ShiftController {
+	constructor(private shiftService: ShiftService) {}
 
 	@Get("")
 	@HttpCode(HttpStatus.OK)
 	index(@Query() params: any) {
-		const response = this.detailLabTsubjectService.getAll();
+		const response = this.shiftService.getAll();
 
 		return {
 			data: response,
@@ -42,7 +42,7 @@ export class DetailLabTsubjectController {
 	@Get(":id")
 	@HttpCode(HttpStatus.OK)
 	show(@Param("id", ParseIntPipe) id: number) {
-		const response = this.detailLabTsubjectService.getOne(id);
+		const response = this.shiftService.getOne(id);
 		return {
 			data: response,
 			message: `show`,
@@ -51,8 +51,8 @@ export class DetailLabTsubjectController {
 
 	@Post("")
 	@HttpCode(HttpStatus.CREATED)
-	store(@Body() payload: CreateDetailLabTsubjectDto) {
-		const response = this.detailLabTsubjectService.create(payload);
+	store(@Body() payload: CreateShiftDto) {
+		const response = this.shiftService.create(payload);
 		return {
 			data: response,
 			message: `created`,
@@ -63,9 +63,9 @@ export class DetailLabTsubjectController {
 	@HttpCode(HttpStatus.CREATED)
 	update(
 		@Param("id", ParseIntPipe) id: number,
-		@Body() payload: UpdateDetailLabTsubjectDto
+		@Body() payload: UpdateShiftDto
 	) {
-		const response = this.detailLabTsubjectService.update(id, payload);
+		const response = this.shiftService.update(id, payload);
 		return {
 			data: response,
 			message: `update`,
@@ -75,7 +75,7 @@ export class DetailLabTsubjectController {
 	@Delete(":id")
 	@HttpCode(HttpStatus.CREATED)
 	destroy(@Param("id", ParseIntPipe) id: number) {
-		const response = this.detailLabTsubjectService.delete(id);
+		const response = this.shiftService.delete(id);
 		return {
 			data: response,
 			message: `deleted`,
