@@ -9,5 +9,5 @@ export class CreateShiftDto {
 	readonly checkTime: string;
 
 	@IsString()
-	readonly departureTime: number;
+	readonly departureTime: string;
 }

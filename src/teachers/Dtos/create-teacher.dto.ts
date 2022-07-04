@@ -14,7 +14,7 @@ export class CreateTeacherDto {
 	@IsPositive() //El campo sea positivo
 	@MaxLength(10) //Maximo de 10
 	@MinLength(10) //Minimo de 10
-	readonly identityCard: string;
+	readonly identityCard: number;
 
 	@IsNotEmpty() //El campo no este vacio
 	@IsString() //El campo de texto
