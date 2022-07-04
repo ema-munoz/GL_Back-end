@@ -2,10 +2,10 @@ import { Module } from "@nestjs/common";
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
 import { TypeOrmModule } from "@nestjs/typeorm";
-import { LaboratoryController } from "./controllers/laboratory.controller";
-import { LaboratoryService } from "./services/laboratory.service";
-import { SubjectController } from "./controllers/subject.controller";
-import { SubjectService } from "./services/subject.service";
+import { LaboratoryController } from "./laboratories/laboratory.controller";
+import { LaboratoryService } from "./laboratories/laboratory.service";
+import { SubjectController } from "./subjects/subject.controller";
+import { SubjectService } from "./subjects/subject.service";
 import { TeacherController } from "./controllers/teacher.controller";
 import { TeacherService } from "./services/teacher.service";
 import { ShiftController } from "./controllers/shift.controller";
@@ -22,8 +22,8 @@ import { CareerController } from "./controllers/career.controller";
 import { CareerService } from "./services/career.service";
 import { DetailTeacherSubjectController } from "./controllers/detail_teacher_subject.controller";
 import { DetailTeacherSubjectService } from "./services/detail_teacher_subject.service";
-import { DetailLabTsubjectController } from "./controllers/detail-lab-tsubject.controller";
-import { DetailLabTsubjectService } from "./services/detail-lab-tsubject.service";
+import { DetailLabTsubjectController } from "./detail_lab_tsubject/detail-lab-tsubject.controller";
+import { DetailLabTsubjectService } from "./detail_lab_tsubject/detail-lab-tsubject.service";
 
 @Module({
 	imports: [
