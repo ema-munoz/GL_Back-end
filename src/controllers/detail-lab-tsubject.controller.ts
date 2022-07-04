@@ -11,8 +11,8 @@ import {
 	Put,
 	Query,
 } from "@nestjs/common";
-import { CreateDetailLabTsubjectDto } from "src/Dtos/detail_lab_tsubject/create-detail-tsubject.dto copy";
-import { UpdateDetailLabTsubjectDto } from "src/Dtos/detail_lab_tsubject/update-detail-tsubject.dto";
+import { CreateDetailLabTsubjectDto } from "src/detail_lab_tsubject/Dtos/create-detail-tsubject.dto";
+import { UpdateDetailLabTsubjectDto } from "src/detail_lab_tsubject/Dtos/update-detail-tsubject.dto";
 import { DetailLabTsubjectService } from "src/services/detail-lab-tsubject.service";
 
 @Controller("detail-lab-tsubject")

@@ -11,22 +11,6 @@ import {
 	Put,
 	Query,
 } from "@nestjs/common";
-import { CreateCareerDto } from "src/Dtos/career/create-career.dto";
-import { UpdateCareerDto } from "src/Dtos/career/update-career.dto";
-import { CareerService } from "src/services/career.service";
-import {
-	Body,
-	Controller,
-	Delete,
-	Get,
-	HttpCode,
-	HttpStatus,
-	Param,
-	ParseIntPipe,
-	Post,
-	Put,
-	Query,
-} from "@nestjs/common";
 import { CreateCareerDto } from "src/careers/dtos/create-career.dto";
 import { UpdateCareerDto } from "src/careers/dtos/update-career.dto";
 import { CareerService } from "src/careers/services/career.service";
