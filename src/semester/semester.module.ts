@@ -10,4 +10,4 @@ import { SemesterService } from "./semester.service";
 	providers: [SemesterService],
 	exports: [SemesterService],
 })
-export class LabotoryModule {}
+export class SemesterModule {}
