@@ -12,7 +12,7 @@ import {
 	Query,
 } from "@nestjs/common";
 
-import { CreateSemesterDto } from "src/Dtos/semester/create-semester.dto";
+import { CreateSemesterDto } from "src/semester/Dtos/create-semester.dto";
 import { UpdateSemesterDto } from "src/semester/Dtos/update-semester.dto";
 import { SemesterService } from "src/semester/semester.service";
 @Controller("semester")
@@ -21,42 +21,38 @@ export class SemesterController {
 
 	@Get("")
 	@HttpCode(HttpStatus.OK)
-	index(@Query() params: any) {
-		const response = this.semesterService.getAll();
+	findAll(@Query() params: any) {
+		const response = this.semesterService.findAll();
+		return response;
 
-		return {
-			data: response,
-			message: `index`,
-		};
-	}
-
-	@Get("filter")
-	@HttpCode(HttpStatus.OK)
-	filter(@Query("search") search: string) {
-		return {
-			data: search,
-			message: `filter`,
-		};
+		// return {
+		//     data: response,
+		//     message: `index`,
+		// };
 	}
 
 	@Get(":id")
 	@HttpCode(HttpStatus.OK)
-	show(@Param("id", ParseIntPipe) id: number) {
-		const response = this.semesterService.getOne(id);
-		return {
-			data: response,
-			message: `show`,
-		};
+	findOne(@Param("id", ParseIntPipe) id: number) {
+		const response = this.semesterService.findOne(id);
+		return response;
+
+		// return {
+		//     data: response,
+		//     message: `show`,
+		// };
 	}
 
 	@Post("")
 	@HttpCode(HttpStatus.CREATED)
-	store(@Body() payload: CreateSemesterDto) {
+	create(@Body() payload: CreateSemesterDto) {
 		const response = this.semesterService.create(payload);
-		return {
-			data: response,
-			message: `created`,
-		};
+		return response;
+
+		// return {
+		//     data: response,
+		//     message: `created`,
+		// };
 	}
 
 	@Put(":id")
@@ -66,19 +62,23 @@ export class SemesterController {
 		@Body() payload: UpdateSemesterDto
 	) {
 		const response = this.semesterService.update(id, payload);
-		return {
-			data: response,
-			message: `update`,
-		};
+		return response;
+
+		// return {
+		//     data: response,
+		//     message: `updated ${id}`,
+		// };
 	}
 
 	@Delete(":id")
 	@HttpCode(HttpStatus.CREATED)
-	destroy(@Param("id", ParseIntPipe) id: number) {
-		const response = this.semesterService.delete(id);
-		return {
-			data: response,
-			message: `deleted`,
-		};
+	remove(@Param("id", ParseIntPipe) id: number) {
+		const response = this.semesterService.remove(id);
+		return response;
+
+		// return {
+		//     data: response,
+		//     message: `deleted`,
+		// };
 	}
 }

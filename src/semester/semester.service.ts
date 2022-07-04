@@ -1,57 +1,52 @@
 import { Injectable, NotFoundException } from "@nestjs/common";
-import { CreateSemesterDto } from "src/Dtos/semester/create-semester.dto";
+import { InjectRepository } from "@nestjs/typeorm";
+import { CreateSemesterDto } from "src/semester/Dtos/create-semester.dto";
 import { UpdateSemesterDto } from "src/semester/Dtos/update-semester.dto";
+import { Repository } from "typeorm";
+import { SemesterEntity } from "./entities/semester.entity";
 
 @Injectable()
 export class SemesterService {
-	semesters: any[] = [];
-	id = 1;
+	constructor(
+		@InjectRepository(SemesterEntity)
+		private semesterRepository: Repository<SemesterEntity>
+	) {}
 
-	getAll() {
-		return this.semesters;
+	async create(payload: CreateSemesterDto) {
+		const newSemester = this.semesterRepository.create(payload);
+		return await this.semesterRepository.save(newSemester);
 	}
 
-	getOne(id: number) {
-		const semester = this.semesters.find((semester) => semester.id == id);
-		if (semester == undefined) {
+	async findAll() {
+		return await this.semesterRepository.find();
+	}
+
+	async findOne(id: number) {
+		const semester = await this.semesterRepository.findOne({
+			where: {
+				id: id,
+			},
+		});
+		if (semester === null) {
 			throw new NotFoundException("El laboratorio no se encontro");
 		}
-
 		return semester;
 	}
 
-	filter(search: string) {
-		const semesters = this.semesters.filter(
-			(semester) => semester.name == search
-		);
-		return semesters;
+	async remove(id: number) {
+		return await this.semesterRepository.delete(id);
 	}
 
-	create(payload: CreateSemesterDto) {
-		const data = {
-			id: this.id,
-			name: payload.name,
-		};
-		this.id++;
-		this.semesters.push(data);
-		return data;
-	}
-
-	update(id: number, payload: UpdateSemesterDto) {
-		const index = this.semesters.findIndex((semester) => semester.id == id);
-		if (index == -1) {
+	async update(id: number, payload: UpdateSemesterDto) {
+		const semester = await this.semesterRepository.findOne({
+			where: {
+				id: id,
+			},
+		});
+		if (semester === null) {
 			throw new NotFoundException("El laboratorio no se encontro");
 		}
-		this.semesters[index]["name"] = payload.name;
-		return this.semesters[index];
-	}
-
-	delete(id: number) {
-		const index = this.semesters.findIndex((semester) => semester.id == id);
-		if (index == -1) {
-			throw new NotFoundException("El laboratorio no se encontro");
-		}
-		this.semesters.splice(index, 1);
-		return true;
+		this.semesterRepository.merge(semester, payload);
+		return this.semesterRepository.save(semester);
 	}
 }
