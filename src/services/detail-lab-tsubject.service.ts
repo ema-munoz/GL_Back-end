@@ -1,10 +1,10 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
-import { CreateDetailLabTsubjectDto } from 'src/Dtos/detail_lab_tsubject/create-detail-tsubject.dto copy';
-import { UpdateDetailLabTsubjectDto } from 'src/Dtos/detail_lab_tsubject/update-detail-tsubject.dto';
+import { Injectable, NotFoundException } from "@nestjs/common";
+import { CreateDetailLabTsubjectDto } from "src/Dtos/detail_lab_tsubject/create-detail-tsubject.dto copy";
+import { UpdateDetailLabTsubjectDto } from "src/Dtos/detail_lab_tsubject/update-detail-tsubject.dto";
 
 @Injectable()
 export class DetailLabTsubjectService {
-    detailsLTS: any[] = [];
+	detailsLTS: any[] = [];
 	id = 1;
 
 	getAll() {
@@ -32,7 +32,7 @@ export class DetailLabTsubjectService {
 	create(payload: CreateDetailLabTsubjectDto) {
 		const data = {
 			id: this.id,
-            date: payload.date,
+			date: payload.date,
 		};
 		this.id++;
 		this.detailsLTS.push(data);

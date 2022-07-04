@@ -5,6 +5,7 @@
 // 	.then(async () => {
 // 		console.log("Inserting a new teacher into the database...");
 // 		const teacher = new Teacher();
+//      teacher.identityCard = "1713289914"
 // 		teacher.names = "Timber";
 // 		teacher.lastNames = "Saw";
 // 		teacher.institutionalMail = "t.saw@yavirac.edu.ec";

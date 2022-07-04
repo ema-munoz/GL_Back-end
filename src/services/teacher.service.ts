@@ -34,6 +34,7 @@ export class TeacherService {
 			lastNames: payload.lastNames,
 			institutionalMail: payload.institutionalMail,
 			phone: payload.phone,
+			identityCard: payload.identityCard,
 		};
 		this.id++;
 		this.teachers.push(data);
@@ -49,6 +50,7 @@ export class TeacherService {
 		this.teachers[index]["lastNames"] = payload.lastNames;
 		this.teachers[index]["institutionalMail"] = payload.institutionalMail;
 		this.teachers[index]["phone"] = payload.phone;
+		this.teachers[index]["identityCard"] = payload.identityCard;
 		return this.teachers[index];
 	}
 

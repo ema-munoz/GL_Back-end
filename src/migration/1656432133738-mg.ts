@@ -11,7 +11,8 @@ export class mg1656432133738 implements MigrationInterface {
 			`CREATE TABLE "shift" ("id" SERIAL NOT NULL, "name" character varying NOT NULL, "checkTime" character varying NOT NULL, "departureTime" character varying NOT NULL, CONSTRAINT "PK_53071a6485a1e9dc75ec3db54b9" PRIMARY KEY ("id"))`
 		);
 		await queryRunner.query(
-			`CREATE TABLE "teacher" ("id" SERIAL NOT NULL, "names" character varying NOT NULL, "lastNames" character varying NOT NULL, "institutionalMail" character varying NOT NULL, "phone" integer NOT NULL, CONSTRAINT "PK_2f807294148612a9751dacf1026" PRIMARY KEY ("id"))`
+			`CREATE TABLE "teacher" ("id" SERIAL NOT NULL,
+			"identityCard" integer NOT NULL, "names" character varying NOT NULL, "lastNames" character varying NOT NULL, "institutionalMail" character varying NOT NULL, "phone" integer NOT NULL, CONSTRAINT "PK_2f807294148612a9751dacf1026" PRIMARY KEY ("id"))`
 		);
 	}
 

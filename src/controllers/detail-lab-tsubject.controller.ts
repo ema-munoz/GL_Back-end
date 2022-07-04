@@ -1,13 +1,25 @@
-import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, ParseIntPipe, Post, Put, Query } from '@nestjs/common';
-import { CreateDetailLabTsubjectDto } from 'src/Dtos/detail_lab_tsubject/create-detail-tsubject.dto copy';
-import { UpdateDetailLabTsubjectDto } from 'src/Dtos/detail_lab_tsubject/update-detail-tsubject.dto';
-import { DetailLabTsubjectService } from 'src/services/detail-lab-tsubject.service';
+import {
+	Body,
+	Controller,
+	Delete,
+	Get,
+	HttpCode,
+	HttpStatus,
+	Param,
+	ParseIntPipe,
+	Post,
+	Put,
+	Query,
+} from "@nestjs/common";
+import { CreateDetailLabTsubjectDto } from "src/Dtos/detail_lab_tsubject/create-detail-tsubject.dto copy";
+import { UpdateDetailLabTsubjectDto } from "src/Dtos/detail_lab_tsubject/update-detail-tsubject.dto";
+import { DetailLabTsubjectService } from "src/services/detail-lab-tsubject.service";
 
-@Controller('detail-lab-tsubject')
+@Controller("detail-lab-tsubject")
 export class DetailLabTsubjectController {
-    constructor(private detailLabTsubjectService: DetailLabTsubjectService){}
+	constructor(private detailLabTsubjectService: DetailLabTsubjectService) {}
 
-    @Get("")
+	@Get("")
 	@HttpCode(HttpStatus.OK)
 	index(@Query() params: any) {
 		const response = this.detailLabTsubjectService.getAll();

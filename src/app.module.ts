@@ -18,20 +18,12 @@ import { ParallelController } from "./controllers/parallel.controller";
 import { GradeService } from "./services/grade.service";
 import { LabStateService } from "./services/lab_state.service";
 import { ParallelService } from "./services/parallel.service";
-<<<<<<< HEAD
 import { CareerController } from "./controllers/career.controller";
 import { CareerService } from "./services/career.service";
 import { DetailTeacherSubjectController } from "./controllers/detail_teacher_subject.controller";
 import { DetailTeacherSubjectService } from "./services/detail_teacher_subject.service";
-=======
-import { CareerController } from './controllers/career.controller';
-import { CareerService } from './services/career.service';
-import { DetailTeacherSubjectController } from './controllers/detail_teacher_subject.controller';
-import { DetailTeacherSubjectService } from './services/detail_teacher_subject.service';
-import { DetailLabTsubjectController } from './controllers/detail-lab-tsubject.controller';
-import { DetailLabTsubjectService } from './services/detail-lab-tsubject.service';
-
->>>>>>> 7b49a940f946431d2aff62ba29077ed48c9a481c
+import { DetailLabTsubjectController } from "./controllers/detail-lab-tsubject.controller";
+import { DetailLabTsubjectService } from "./services/detail-lab-tsubject.service";
 
 @Module({
 	imports: [

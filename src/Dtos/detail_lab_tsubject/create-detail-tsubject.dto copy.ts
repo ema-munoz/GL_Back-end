@@ -1,7 +1,6 @@
-import { IsDateString, } from "class-validator";
+import { IsDateString } from "class-validator";
 
-export class CreateDetailLabTsubjectDto{
-
-    @IsDateString()
-    readonly date:Date
+export class CreateDetailLabTsubjectDto {
+	@IsDateString()
+	readonly date: Date;
 }

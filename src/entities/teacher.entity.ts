@@ -6,6 +6,9 @@ export class Teacher {
 	id: number;
 
 	@Column()
+	identityCard: number;
+
+	@Column()
 	names: string;
 
 	@Column()
