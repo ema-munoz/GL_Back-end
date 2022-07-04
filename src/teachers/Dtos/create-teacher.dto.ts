@@ -26,7 +26,7 @@ export class CreateTeacherDto {
 
 	@IsNotEmpty() //El campo no este vacio
 	@IsEmail() //El campo acepta correo
-	readonly institutionalMail: number;
+	readonly institutionalMail: string;
 
 	@IsNotEmpty() //El campo no este vacio
 	@IsNumber() //El campo es numerico
