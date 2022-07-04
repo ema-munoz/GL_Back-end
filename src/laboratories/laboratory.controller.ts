@@ -16,42 +16,42 @@ import { UpdateLaboratoryDto } from "src/laboratories/Dtos/update-laboratory.dto
 import { LaboratoryService } from "src/laboratories/laboratory.service";
 @Controller("laboratory")
 export class LaboratoryController {
-	constructor(private laboratoryService: LaboratoryService) {}
+	constructor(private laboratoryService: LaboratoryService) { }
 
 	@Get("")
 	@HttpCode(HttpStatus.OK)
 	findAll(@Query() params: any) {
 		const response = this.laboratoryService.findAll();
-		return response;
+		// return response;
 
-		// return {
-		//     data: response,
-		//     message: `index`,
-		// };
+		return {
+			data: response,
+			message: `Lista de laboratorios`,
+		};
 	}
 
 	@Get(":id")
 	@HttpCode(HttpStatus.OK)
 	findOne(@Param("id", ParseIntPipe) id: number) {
 		const response = this.laboratoryService.findOne(id);
-		return response;
+		// return response;
 
-		// return {
-		//     data: response,
-		//     message: `show`,
-		// };
+		return {
+			data: response,
+			message: `Laboratorio ${id}`,
+		};
 	}
 
 	@Post("")
 	@HttpCode(HttpStatus.CREATED)
 	create(@Body() payload: CreateLaboratoryDto) {
 		const response = this.laboratoryService.create(payload);
-		return response;
+		// return response;
 
-		// return {
-		//     data: response,
-		//     message: `created`,
-		// };
+		return {
+			data: response,
+			message: `Laboratorio creado`,
+		};
 	}
 
 	@Put(":id")
@@ -61,23 +61,23 @@ export class LaboratoryController {
 		@Body() payload: UpdateLaboratoryDto
 	) {
 		const response = this.laboratoryService.update(id, payload);
-		return response;
+		// return response;
 
-		// return {
-		//     data: response,
-		//     message: `updated ${id}`,
-		// };
+		return {
+			data: response,
+			message: `El laboratorio: ${id} se actualizo`,
+		};
 	}
 
 	@Delete(":id")
 	@HttpCode(HttpStatus.CREATED)
-	remove(@Param("id", ParseIntPipe) id: number) {
-		const response = this.laboratoryService.remove(id);
-		return response;
+	delete(@Param("id", ParseIntPipe) id: number) {
+		const response = this.laboratoryService.delete(id);
+		// return response;
 
-		// return {
-		//     data: response,
-		//     message: `deleted`,
-		// };
+		return {
+			data: response,
+			message: `El laboratorio ${id} se elimino correctamente`,
+		};
 	}
 }

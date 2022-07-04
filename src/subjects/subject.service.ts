@@ -7,46 +7,47 @@ import { SubjectEntity } from "./entities/subject.entity";
 
 @Injectable()
 export class SubjectService {
-	constructor(
-		@InjectRepository(SubjectEntity)
-		private subjectRepository: Repository<SubjectEntity>
-	) {}
+	subjects: any[] = [];
+	id = 1;
 
-	async create(payload: CreateSubjectDto) {
-		const newSubject = this.subjectRepository.create(payload);
-		return await this.subjectRepository.save(newSubject);
+	findAll() {
+		return this.subjects;
 	}
 
-	async findAll() {
-		return await this.subjectRepository.find();
-	}
-
-	async findOne(id: number) {
-		const subject = await this.subjectRepository.findOne({
-			where: {
-				id: id,
-			},
-		});
-		if (subject === null) {
-			throw new NotFoundException("La materia no se encontro");
+	findOne(id: number) {
+		const subject = this.subjects.find((subject) => subject.id == id);
+		if (subject == undefined) {
+			throw new NotFoundException("Materia no encontrada");
 		}
+
 		return subject;
 	}
 
-	async remove(id: number) {
-		return await this.subjectRepository.delete(id);
+	create(payload: CreateSubjectDto) {
+		const data = {
+			id: this.id,
+			name: payload.name,
+		};
+		this.id++;
+		this.subjects.push(data);
+		return data;
 	}
 
-	async update(id: number, payload: UpdateSubjectDto) {
-		const subject = await this.subjectRepository.findOne({
-			where: {
-				id: id,
-			},
-		});
-		if (subject === null) {
-			throw new NotFoundException("La materia no se encontro");
+	update(id: number, payload: UpdateSubjectDto) {
+		const index = this.subjects.findIndex((subject) => subject.id == id);
+		if (index == -1) {
+			throw new NotFoundException("Materia no encontrada");
 		}
-		this.subjectRepository.merge(subject, payload);
-		return this.subjectRepository.save(subject);
+		this.subjects[index]["name"] = payload.name;
+		return this.subjects[index];
+	}
+
+	delete(id: number) {
+		const index = this.subjects.findIndex((subject) => subject.id == id);
+		if (index == -1) {
+			throw new NotFoundException("Materia no encontrada");
+		}
+		this.subjects.splice(index, 1);
+		return this.subjects;
 	}
 }

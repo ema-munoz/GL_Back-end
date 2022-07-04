@@ -7,46 +7,51 @@ import { LaboratoryEntity } from "./entities/laboratory.entity";
 
 @Injectable()
 export class LaboratoryService {
-	constructor(
-		@InjectRepository(LaboratoryEntity)
-		private laboratoryRepository: Repository<LaboratoryEntity>
-	) {}
+	laboratories: any[] = [];
+	id = 1;
 
-	async create(payload: CreateLaboratoryDto) {
-		const newLaboratory = this.laboratoryRepository.create(payload);
-		return await this.laboratoryRepository.save(newLaboratory);
+	findAll() {
+		return this.laboratories;
 	}
 
-	async findAll() {
-		return await this.laboratoryRepository.find();
-	}
-
-	async findOne(id: number) {
-		const laboratory = await this.laboratoryRepository.findOne({
-			where: {
-				id: id,
-			},
-		});
-		if (laboratory === null) {
-			throw new NotFoundException("El laboratorio no se encontro");
+	findOne(id: number) {
+		const laboratory = this.laboratories.find((laboratory) => laboratory.id == id);
+		if (laboratory == undefined) {
+			throw new NotFoundException("Laboratorio no encontrado");
 		}
+
 		return laboratory;
 	}
 
-	async remove(id: number) {
-		return await this.laboratoryRepository.delete(id);
+	create(payload: CreateLaboratoryDto) {
+		const data = {
+			id: this.id,
+			name: payload.name,
+			capacity: payload.capacity,
+			description: payload.description,
+		};
+		this.id++;
+		this.laboratories.push(data);
+		return data;
 	}
 
-	async update(id: number, payload: UpdateLaboratoryDto) {
-		const laboratory = await this.laboratoryRepository.findOne({
-			where: {
-				id: id,
-			},
-		});
-		if (laboratory === null) {
-			throw new NotFoundException("El laboratorio no se encontro");
+	update(id: number, payload: UpdateLaboratoryDto) {
+		const index = this.laboratories.findIndex((laboratory) => laboratory.id == id);
+		if (index == -1) {
+			throw new NotFoundException("Laboratorio no encontrado");
 		}
-		this.laboratoryRepository.merge(laboratory, payload);
-		return this.laboratoryRepository.save(laboratory);
+		this.laboratories[index]["name"] = payload.name;
+		this.laboratories[index]["capacity"] = payload.capacity;
+		this.laboratories[index]["description"] = payload.description;
+		return this.laboratories[index];
+	}
+
+	delete(id: number) {
+		const index = this.laboratories.findIndex((laboratory) => laboratory.id == id);
+		if (index == -1) {
+			throw new NotFoundException("Laboratorio no encontrado");
+		}
+		this.laboratories.splice(index, 1);
+		return this.laboratories;
 	}
 }
