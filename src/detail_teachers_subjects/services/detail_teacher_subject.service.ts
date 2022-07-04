@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { CreateDetailTeacherSubjectDto } from 'src/Dtos/detail_teacher_subject/create-detail_teacher_subject.dto';
-import { UpdateDetailTeacherSubject } from 'src/Dtos/detail_teacher_subject/update-detail_teacher_subject.dto';
+import { CreateDetailTeacherSubjectDto } from 'src/detail_teachers_subjects/dtos/create-detail_teacher_subject.dto';
+import { UpdateDetailTeacherSubject } from 'src/detail_teachers_subjects/dtos/update-detail_teacher_subject.dto';
 
 @Injectable()
 export class DetailTeacherSubjectService {
