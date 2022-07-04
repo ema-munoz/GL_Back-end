@@ -16,27 +16,19 @@ import { LabStateController } from "./lab_state_subject/lab_state.controller";
 import { LabStateService } from "./lab_state_subject/lab_state.service";
 import { ParallelController } from "./parallel/parallel.controller";
 import { ParallelService } from "./parallel/parallel.service";
-import { SemesterController } from "./semester/semester.controller";
-import { SemesterService } from "./semester/semester.service";
-import { ShiftController } from "./shifts/shift.controller";
-import { ShiftService } from "./shifts/shift.service";
-import { SubjectController } from "./subjects/subject.controller";
-import { SubjectService } from "./subjects/subject.service";
-import { TeacherController } from "./teachers/teacher.controller";
-import { TeacherService } from "./teachers/teacher.service";
+import { CareerController } from "./careers/controllers/career.controller";
+import { CareerService } from "./careers/services/career.service";
+import { DetailTeacherSubjectController } from "./detail_teachers_subjects/controllers/detail_teacher_subject.controller";
+import { DetailTeacherSubjectService } from "./detail_teachers_subjects/services/detail_teacher_subject.service";
+import { CareersModule } from "./careers/careers.module";
+import { DetailTeachersSubjectsModule } from "./detail_teachers_subjects/detail_teachers_subjects.module";
+import { LabotoryModule } from "./laboratories/laboratory.module";
 
 @Module({
 	imports: [
-		// TypeOrmModule.forRoot({
-		// 	type: "postgres",
-		// 	host: "localhost",
-		// 	port: 5432,
-		// 	username: "postgres",
-		// 	password: "...",
-		// 	database: "Gestion_Laboratorios",
-		// 	entities: [],
-		// 	synchronize: true,
-		// }),
+		CareersModule,
+		DetailTeachersSubjectsModule,
+		LabotoryModule,
 	],
 
 	controllers: [

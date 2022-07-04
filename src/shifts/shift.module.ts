@@ -10,4 +10,4 @@ import { ShiftService } from "./shift.service";
 	providers: [ShiftService],
 	exports: [ShiftService],
 })
-export class LabotoryModule {}
+export class ShiftModule {}
