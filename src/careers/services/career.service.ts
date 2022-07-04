@@ -1,7 +1,4 @@
 import { Injectable, NotFoundException } from "@nestjs/common";
-import { CreateCareerDto } from "src/Dtos/career/create-career.dto";
-import { UpdateCareerDto } from "src/Dtos/career/update-career.dto";
-import { Injectable, NotFoundException } from "@nestjs/common";
 import { CreateCareerDto } from "src/careers/dtos/create-career.dto";
 import { UpdateCareerDto } from "src/careers/dtos/update-career.dto";
 

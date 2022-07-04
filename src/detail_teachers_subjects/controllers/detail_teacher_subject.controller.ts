@@ -11,22 +11,6 @@ import {
 	Put,
 	Query,
 } from "@nestjs/common";
-import { CreateDetailTeacherSubjectDto } from "src/Dtos/detail_teacher_subject/create-detail_teacher_subject.dto";
-import { UpdateDetailTeacherSubject } from "src/Dtos/detail_teacher_subject/update-detail_teacher_subject.dto";
-import { DetailTeacherSubjectService } from "src/services/detail_teacher_subject.service";
-import {
-	Body,
-	Controller,
-	Delete,
-	Get,
-	HttpCode,
-	HttpStatus,
-	Param,
-	ParseIntPipe,
-	Post,
-	Put,
-	Query,
-} from "@nestjs/common";
 import { CreateDetailTeacherSubjectDto } from "src/detail_teachers_subjects/dtos/create-detail_teacher_subject.dto";
 import { UpdateDetailTeacherSubject } from "src/detail_teachers_subjects/dtos/update-detail_teacher_subject.dto";
 import { DetailTeacherSubjectService } from "src/detail_teachers_subjects/services/detail_teacher_subject.service";
