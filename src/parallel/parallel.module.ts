@@ -5,9 +5,9 @@ import { ParallelController } from "./parallel.controller";
 import { ParallelService } from "./parallel.service";
 
 @Module({
-    imports: [TypeOrmModule.forFeature([Paralelo])],
-    controllers: [ParallelController],
-    providers: [ParallelService],
-    exports: [ParallelService],
+	imports: [TypeOrmModule.forFeature([Paralelo])],
+	controllers: [ParallelController],
+	providers: [ParallelService],
+	exports: [ParallelService],
 })
 export class ParallelModule {}

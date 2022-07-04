@@ -18,67 +18,66 @@ import { UpdateParallelDto } from "src/parallel/Dtos/update-parallel.dto";
 export class ParallelController {
 	constructor(private parallelService: ParallelService) {}
 
-	@Get('')
-    @HttpCode(HttpStatus.OK)
-    findAll(@Query() params: any) {
-        const response = this.parallelService.findAll();
-        return response;
+	@Get("")
+	@HttpCode(HttpStatus.OK)
+	findAll(@Query() params: any) {
+		const response = this.parallelService.findAll();
+		return response;
 
-        // return {
-        //     data: response,
-        //     message: `index`,
-        // };
-    }
+		// return {
+		//     data: response,
+		//     message: `index`,
+		// };
+	}
 
-	@Get(':id')
-    @HttpCode(HttpStatus.OK)
-    findOne(@Param('id', ParseIntPipe) id: number) {
-        const response = this.parallelService.findOne(id);
-        return response;
+	@Get(":id")
+	@HttpCode(HttpStatus.OK)
+	findOne(@Param("id", ParseIntPipe) id: number) {
+		const response = this.parallelService.findOne(id);
+		return response;
 
-        // return {
-        //     data: response,
-        //     message: `show`,
-        // };
-    }
+		// return {
+		//     data: response,
+		//     message: `show`,
+		// };
+	}
 
-	@Post('')
-    @HttpCode(HttpStatus.CREATED)
-    create(@Body() payload: CreateParallelDto) {
-        const response = this.parallelService.create(payload);
-        return response;
+	@Post("")
+	@HttpCode(HttpStatus.CREATED)
+	create(@Body() payload: CreateParallelDto) {
+		const response = this.parallelService.create(payload);
+		return response;
 
-        // return {
-        //     data: response,
-        //     message: `created`,
-        // };
-    }
+		// return {
+		//     data: response,
+		//     message: `created`,
+		// };
+	}
 
-	@Put(':id')
-    @HttpCode(HttpStatus.CREATED)
-    update(
-        @Param('id', ParseIntPipe) id: number,
-        @Body() payload: UpdateParallelDto,
-    ) {
-        const response = this.parallelService.update(id, payload);
-        return response;
+	@Put(":id")
+	@HttpCode(HttpStatus.CREATED)
+	update(
+		@Param("id", ParseIntPipe) id: number,
+		@Body() payload: UpdateParallelDto
+	) {
+		const response = this.parallelService.update(id, payload);
+		return response;
 
-        // return {
-        //     data: response,
-        //     message: `updated ${id}`,
-        // };
-    }
+		// return {
+		//     data: response,
+		//     message: `updated ${id}`,
+		// };
+	}
 
-	@Delete(':id')
-    @HttpCode(HttpStatus.CREATED)
-    remove(@Param('id', ParseIntPipe) id: number) {
-        const response = this.parallelService.remove(id);
-        return response;
+	@Delete(":id")
+	@HttpCode(HttpStatus.CREATED)
+	remove(@Param("id", ParseIntPipe) id: number) {
+		const response = this.parallelService.remove(id);
+		return response;
 
-        // return {
-        //     data: response,
-        //     message: `deleted`,
-        // };
-    }
+		// return {
+		//     data: response,
+		//     message: `deleted`,
+		// };
+	}
 }
-
