@@ -1,3 +1,4 @@
+<<<<<<< HEAD:src/controllers/career.controller.ts
 import {
 	Body,
 	Controller,
@@ -14,6 +15,12 @@ import {
 import { CreateCareerDto } from "src/Dtos/career/create-career.dto";
 import { UpdateCareerDto } from "src/Dtos/career/update-career.dto";
 import { CareerService } from "src/services/career.service";
+=======
+import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, ParseIntPipe, Post, Put, Query } from '@nestjs/common';
+import { CreateCareerDto } from 'src/careers/dtos/create-career.dto';
+import { UpdateCareerDto } from 'src/careers/dtos/update-career.dto';
+import { CareerService } from 'src/careers/services/career.service';
+>>>>>>> 1a9bd738ed3c2659a577705a3d5b0ca59efe5981:src/careers/controllers/career.controller.ts
 
 @Controller("career")
 export class CareerController {

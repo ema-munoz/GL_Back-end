@@ -1,6 +1,6 @@
 import { Injectable } from "@nestjs/common";
-import { CreateGradeDto } from "src/Dtos/grade/create-grade.dto";
-import { UpdateGradeDto } from "src/Dtos/grade/update-grade.dto";
+import { CreateGradeDto } from "src/grade/Dtos/create-grade.dto";
+import { UpdateGradeDto } from "src/grade/Dtos/update-grade.dto";
 
 @Injectable()
 export class GradeService {

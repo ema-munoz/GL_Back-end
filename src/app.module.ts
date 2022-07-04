@@ -12,6 +12,7 @@ import { ShiftController } from "./controllers/shift.controller";
 import { ShiftService } from "./services/shift.service";
 import { SemesterController } from "./controllers/semester.controller";
 import { SemesterService } from "./services/semester.service";
+<<<<<<< HEAD
 import { GradeController } from "./controllers/grade.controller";
 import { LabStateController } from "./controllers/lab_state.controller";
 import { ParallelController } from "./controllers/parallel.controller";
@@ -24,6 +25,23 @@ import { DetailTeacherSubjectController } from "./controllers/detail_teacher_sub
 import { DetailTeacherSubjectService } from "./services/detail_teacher_subject.service";
 import { DetailLabTsubjectController } from "./detail_lab_tsubject/detail-lab-tsubject.controller";
 import { DetailLabTsubjectService } from "./detail_lab_tsubject/detail-lab-tsubject.service";
+=======
+import { GradeController } from "./grade/grade.controller";
+import { LabStateController } from "./lab_state_subject/lab_state.controller";
+import { ParallelController } from "./parallel/parallel.controller";
+import { GradeService } from "./grade/grade.service";
+import { LabStateService } from "./lab_state_subject/lab_state.service";
+import { ParallelService } from "./parallel/parallel.service";
+import { CareerController } from './careers/controllers/career.controller';
+import { CareerService } from './careers/services/career.service';
+import { DetailTeacherSubjectController } from './detail_teachers_subjects/controllers/detail_teacher_subject.controller';
+import { DetailTeacherSubjectService } from './detail_teachers_subjects/services/detail_teacher_subject.service';
+import { DetailLabTsubjectController } from './detail_lab_tsubject/detail-lab-tsubject.controller';
+import { DetailLabTsubjectService } from './detail_lab_tsubject/detail-lab-tsubject.service';
+import { CareersModule } from './careers/careers.module';
+import { DetailTeachersSubjectsModule } from './detail_teachers_subjects/detail_teachers_subjects.module';
+
+>>>>>>> 1a9bd738ed3c2659a577705a3d5b0ca59efe5981
 
 @Module({
 	imports: [
@@ -37,7 +55,8 @@ import { DetailLabTsubjectService } from "./detail_lab_tsubject/detail-lab-tsubj
 		// 	entities: [],
 		// 	synchronize: true,
 		// }),
-	],
+	CareersModule,
+		DetailTeachersSubjectsModule],
 
 	controllers: [
 		AppController,
