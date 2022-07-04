@@ -7,46 +7,47 @@ import { DetailLabTsubjectEntity } from "./entities/detail-lab-tsubject.entity";
 
 @Injectable()
 export class DetailLabTsubjectService {
-	constructor(
-		@InjectRepository(DetailLabTsubjectEntity)
-		private dltsubjectRepository: Repository<DetailLabTsubjectEntity>
-	) {}
+	dtltSubjects: any[] = [];
+	id = 1;
 
-	async create(payload: CreateDetailLabTsubjectDto) {
-		const newDltsubject = this.dltsubjectRepository.create(payload);
-		return await this.dltsubjectRepository.save(newDltsubject);
+	findAll() {
+		return this.dtltSubjects;
 	}
 
-	async findAll() {
-		return await this.dltsubjectRepository.find();
-	}
-
-	async findOne(id: number) {
-		const dltsubject = await this.dltsubjectRepository.findOne({
-			where: {
-				id: id,
-			},
-		});
-		if (dltsubject === null) {
-			throw new NotFoundException("El detalle no se encontro");
+	findOne(id: number) {
+		const dtltSubject = this.dtltSubjects.find((dtltSubject) => dtltSubject.id == id);
+		if (dtltSubject == undefined) {
+			throw new NotFoundException("Detalle no encontrado");
 		}
-		return dltsubject;
+
+		return dtltSubject;
 	}
 
-	async remove(id: number) {
-		return await this.dltsubjectRepository.delete(id);
+	create(payload: CreateDetailLabTsubjectDto) {
+		const data = {
+			id: this.id,
+			date: payload.date,
+		};
+		this.id++;
+		this.dtltSubjects.push(data);
+		return data;
 	}
 
-	async update(id: number, payload: UpdateDetailLabTsubjectDto) {
-		const dltsubject = await this.dltsubjectRepository.findOne({
-			where: {
-				id: id,
-			},
-		});
-		if (dltsubject === null) {
-			throw new NotFoundException("El detalle no se encontro");
+	update(id: number, payload: UpdateDetailLabTsubjectDto) {
+		const index = this.dtltSubjects.findIndex((dtltSubject) => dtltSubject.id == id);
+		if (index == -1) {
+			throw new NotFoundException("Detalle no encontrado");
 		}
-		this.dltsubjectRepository.merge(dltsubject, payload);
-		return this.dltsubjectRepository.save(dltsubject);
+		this.dtltSubjects[index]["date"] = payload.date;
+		return this.dtltSubjects[index];
+	}
+
+	delete(id: number) {
+		const index = this.dtltSubjects.findIndex((dtltSubject) => dtltSubject.id == id);
+		if (index == -1) {
+			throw new NotFoundException("Detalle no encontrado");
+		}
+		this.dtltSubjects.splice(index, 1);
+		return this.dtltSubjects;
 	}
 }

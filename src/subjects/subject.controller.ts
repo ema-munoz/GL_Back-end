@@ -23,36 +23,36 @@ export class SubjectController {
 	@HttpCode(HttpStatus.OK)
 	findAll(@Query() params: any) {
 		const response = this.subjectService.findAll();
-		return response;
+		// return response;
 
-		// return {
-		//     data: response,
-		//     message: `index`,
-		// };
+		return {
+		    data: response,
+		    message: `Lista de materias`,
+		};
 	}
 
 	@Get(":id")
 	@HttpCode(HttpStatus.OK)
 	findOne(@Param("id", ParseIntPipe) id: number) {
 		const response = this.subjectService.findOne(id);
-		return response;
+		// return response;
 
-		// return {
-		//     data: response,
-		//     message: `show`,
-		// };
+		return {
+		    data: response,
+		    message: `Materia ${id}`,
+		};
 	}
 
 	@Post("")
 	@HttpCode(HttpStatus.CREATED)
 	create(@Body() payload: CreateSubjectDto) {
 		const response = this.subjectService.create(payload);
-		return response;
+		// return response;
 
-		// return {
-		//     data: response,
-		//     message: `created`,
-		// };
+		return {
+		    data: response,
+		    message: `Materia creada`,
+		};
 	}
 
 	@Put(":id")
@@ -62,23 +62,23 @@ export class SubjectController {
 		@Body() payload: UpdateSubjectDto
 	) {
 		const response = this.subjectService.update(id, payload);
-		return response;
+		// return response;
 
-		// return {
-		//     data: response,
-		//     message: `updated ${id}`,
-		// };
+		return {
+		    data: response,
+		    message: `La materia ${id} se actualizo`,
+		};
 	}
 
 	@Delete(":id")
 	@HttpCode(HttpStatus.CREATED)
-	remove(@Param("id", ParseIntPipe) id: number) {
-		const response = this.subjectService.remove(id);
-		return response;
+	delete(@Param("id", ParseIntPipe) id: number) {
+		const response = this.subjectService.delete(id);
+		// return response;
 
-		// return {
-		//     data: response,
-		//     message: `deleted`,
-		// };
+		return {
+		    data: response,
+		    message: `La materia ${id} se elimino correctamente`,
+		};
 	}
 }

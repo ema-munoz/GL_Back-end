@@ -23,36 +23,36 @@ export class DetailLabTsubjectController {
 	@HttpCode(HttpStatus.OK)
 	findAll(@Query() params: any) {
 		const response = this.detailLabTsubjectService.findAll();
-		return response;
+		// return response;
 
-		// return {
-		//     data: response,
-		//     message: `index`,
-		// };
+		return {
+		    data: response,
+		    message: `Lista de los detalles`,
+		};
 	}
 
 	@Get(":id")
 	@HttpCode(HttpStatus.OK)
 	findOne(@Param("id", ParseIntPipe) id: number) {
 		const response = this.detailLabTsubjectService.findOne(id);
-		return response;
+		// return response;
 
-		// return {
-		//     data: response,
-		//     message: `show`,
-		// };
+		return {
+		    data: response,
+		    message: `Detalle ${id}`,
+		};
 	}
 
 	@Post("")
 	@HttpCode(HttpStatus.CREATED)
 	create(@Body() payload: CreateDetailLabTsubjectDto) {
 		const response = this.detailLabTsubjectService.create(payload);
-		return response;
+		// return response;
 
-		// return {
-		//     data: response,
-		//     message: `created`,
-		// };
+		return {
+		    data: response,
+		    message: `Detalle creado`,
+		};
 	}
 
 	@Put(":id")
@@ -62,23 +62,23 @@ export class DetailLabTsubjectController {
 		@Body() payload: UpdateDetailLabTsubjectDto
 	) {
 		const response = this.detailLabTsubjectService.update(id, payload);
-		return response;
+		// return response;
 
-		// return {
-		//     data: response,
-		//     message: `updated ${id}`,
-		// };
+		return {
+		    data: response,
+		    message: `El detalle: ${id} se actualizo`,
+		};
 	}
 
 	@Delete(":id")
 	@HttpCode(HttpStatus.CREATED)
-	remove(@Param("id", ParseIntPipe) id: number) {
-		const response = this.detailLabTsubjectService.remove(id);
-		return response;
+	delete(@Param("id", ParseIntPipe) id: number) {
+		const response = this.detailLabTsubjectService.delete(id);
+		// return response;
 
-		// return {
-		//     data: response,
-		//     message: `deleted`,
-		// };
+		return {
+		    data: response,
+		    message: `El detalle ${id} se elimino correctamente`,
+		};
 	}
 }
