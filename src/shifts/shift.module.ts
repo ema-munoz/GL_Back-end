@@ -5,7 +5,6 @@ import { ShiftController } from "./shift.controller";
 import { ShiftService } from "./shift.service";
 
 @Module({
-	imports: [TypeOrmModule.forFeature([ShiftEntity])],
 	controllers: [ShiftController],
 	providers: [ShiftService],
 	exports: [ShiftService],

@@ -5,7 +5,6 @@ import { DetailLabTsubjectService } from "./detail-lab-tsubject.service";
 import { DetailLabTsubjectEntity } from "./entities/detail-lab-tsubject.entity";
 
 @Module({
-	imports: [TypeOrmModule.forFeature([DetailLabTsubjectEntity])],
 	controllers: [DetailLabTsubjectController],
 	providers: [DetailLabTsubjectService],
 	exports: [DetailLabTsubjectService],

@@ -5,7 +5,6 @@ import { LabStateController } from "./lab_state.controller";
 import { LabStateService } from "./lab_state.service";
 
 @Module({
-	imports: [TypeOrmModule.forFeature([EstadoLaboratorio])],
 	controllers: [LabStateController],
 	providers: [LabStateService],
 	exports: [LabStateService],
