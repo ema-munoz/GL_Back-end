@@ -3,8 +3,8 @@ import { DetailTeacherSubjectController } from "./controllers/detail_teacher_sub
 import { DetailTeacherSubjectService } from "./services/detail_teacher_subject.service";
 
 @Module({
-    controllers: [DetailTeacherSubjectController],
-    providers: [DetailTeacherSubjectService],
-    exports: [DetailTeacherSubjectService],
+	controllers: [DetailTeacherSubjectController],
+	providers: [DetailTeacherSubjectService],
+	exports: [DetailTeacherSubjectService],
 })
 export class DetailTeachersSubjectsModule {}

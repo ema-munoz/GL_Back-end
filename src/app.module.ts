@@ -30,7 +30,7 @@ import { DetailTeachersSubjectsModule } from "./detail_teachers_subjects/detail_
 	imports: [
 		CareersModule,
 		DetailTeachersSubjectsModule,
-    /*LabotoryModule */
+		/*LabotoryModule */
 	],
 
 	controllers: [

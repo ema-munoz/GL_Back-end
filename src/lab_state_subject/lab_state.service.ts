@@ -15,9 +15,7 @@ export class LabStateService {
 	}
 
 	findOne(id: number) {
-		const labState = this.labState.find(
-			(labState) => labState.id == id
-		);
+		const labState = this.labState.find((labState) => labState.id == id);
 		if (labState == undefined) {
 			throw new NotFoundException("Laboratorio no encontrado");
 		}
@@ -29,8 +27,7 @@ export class LabStateService {
 		const data = {
 			id: this.id,
 			state: payload.state,
-			observations: payload.observations
-			
+			observations: payload.observations,
 		};
 		this.id++;
 		this.labState.push(data);
@@ -38,9 +35,7 @@ export class LabStateService {
 	}
 
 	update(id: number, payload: UpdateLabStateDto) {
-		const index = this.labState.findIndex(
-			(labState) => labState.id == id
-		);
+		const index = this.labState.findIndex((labState) => labState.id == id);
 		if (index == -1) {
 			throw new NotFoundException("Estado de Laboratorio no encontrado");
 		}
@@ -50,9 +45,7 @@ export class LabStateService {
 	}
 
 	delete(id: number) {
-		const index = this.labState.findIndex(
-			(labState) => labState.id == id
-		);
+		const index = this.labState.findIndex((labState) => labState.id == id);
 		if (index == -1) {
 			throw new NotFoundException("Estado de Laboratorio no encontrado");
 		}

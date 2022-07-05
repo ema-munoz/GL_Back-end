@@ -15,9 +15,7 @@ export class ParallelService {
 	}
 
 	findOne(id: number) {
-		const parallel = this.parallel.find(
-			(parallel) => parallel.id == id
-		);
+		const parallel = this.parallel.find((parallel) => parallel.id == id);
 		if (parallel == undefined) {
 			throw new NotFoundException("Paralelo no encontrado");
 		}
@@ -36,9 +34,7 @@ export class ParallelService {
 	}
 
 	update(id: number, payload: UpdateParallelDto) {
-		const index = this.parallel.findIndex(
-			(parallel) => parallel.id == id
-		);
+		const index = this.parallel.findIndex((parallel) => parallel.id == id);
 		if (index == -1) {
 			throw new NotFoundException("Paralelo no encontrado");
 		}
@@ -47,9 +43,7 @@ export class ParallelService {
 	}
 
 	delete(id: number) {
-		const index = this.parallel.findIndex(
-			(parallel) => parallel.id == id
-		);
+		const index = this.parallel.findIndex((parallel) => parallel.id == id);
 		if (index == -1) {
 			throw new NotFoundException("Paralelo no encontrado");
 		}
@@ -57,4 +51,3 @@ export class ParallelService {
 		return this.parallel;
 	}
 }
-
