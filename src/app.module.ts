@@ -2,12 +2,8 @@ import { Module } from "@nestjs/common";
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
 import { TypeOrmModule } from "@nestjs/typeorm";
-import { CareerController } from "./careers/controllers/career.controller";
-import { CareerService } from "./careers/services/career.service";
 import { DetailLabTsubjectController } from "./detail_lab_tsubject/detail-lab-tsubject.controller";
 import { DetailLabTsubjectService } from "./detail_lab_tsubject/detail-lab-tsubject.service";
-import { DetailTeacherSubjectController } from "./detail_teachers_subjects/controllers/detail_teacher_subject.controller";
-import { DetailTeacherSubjectService } from "./detail_teachers_subjects/services/detail_teacher_subject.service";
 import { GradeController } from "./grade/grade.controller";
 import { GradeService } from "./grade/grade.service";
 import { LaboratoryController } from "./laboratories/laboratory.controller";
@@ -24,15 +20,17 @@ import { SubjectController } from "./subjects/subject.controller";
 import { SubjectService } from "./subjects/subject.service";
 import { TeacherController } from "./teachers/teacher.controller";
 import { TeacherService } from "./teachers/teacher.service";
+import { CareersModule } from "./careers/careers.module";
+import { DetailTeachersSubjectsModule } from "./detail_teachers_subjects/detail_teachers_subjects.module";
 //import { CareersModule } from "./careers/careers.module";
 //import { DetailTeachersSubjectsModule } from "./detail_teachers_subjects/detail_teachers_subjects.module";
 //import { LabotoryModule } from "./laboratories/laboratory.module";
 
 @Module({
 	imports: [
-		/* CareersModule,
-    DetailTeachersSubjectsModule,
-    LabotoryModule */
+		CareersModule,
+		DetailTeachersSubjectsModule,
+    /*LabotoryModule */
 	],
 
 	controllers: [
@@ -45,8 +43,6 @@ import { TeacherService } from "./teachers/teacher.service";
 		LabStateController,
 		ParallelController,
 		SubjectController,
-		CareerController,
-		DetailTeacherSubjectController,
 		DetailLabTsubjectController,
 	],
 	providers: [
@@ -59,8 +55,6 @@ import { TeacherService } from "./teachers/teacher.service";
 		LabStateService,
 		ParallelService,
 		SubjectService,
-		CareerService,
-		DetailTeacherSubjectService,
 		DetailLabTsubjectService,
 	],
 })
