@@ -22,36 +22,36 @@ export class ShiftController {
 	@HttpCode(HttpStatus.OK)
 	findAll(@Query() params: any) {
 		const response = this.shiftService.findAll();
-		return response;
+		// return response;
 
-		// return {
-		//     data: response,
-		//     message: `index`,
-		// };
+		return {
+			data: response,
+			message: `Lista de Jornadas`,
+		};
 	}
 
 	@Get(":id")
 	@HttpCode(HttpStatus.OK)
 	findOne(@Param("id", ParseIntPipe) id: number) {
 		const response = this.shiftService.findOne(id);
-		return response;
+		// return response;
 
-		// return {
-		//     data: response,
-		//     message: `show`,
-		// };
+		return {
+			data: response,
+			message: `Jornada ${id}`,
+		};
 	}
 
 	@Post("")
 	@HttpCode(HttpStatus.CREATED)
 	create(@Body() payload: CreateShiftDto) {
 		const response = this.shiftService.create(payload);
-		return response;
+		// return response;
 
-		// return {
-		//     data: response,
-		//     message: `created`,
-		// };
+		return {
+			data: response,
+			message: `Jornada creado`,
+		};
 	}
 
 	@Put(":id")
@@ -61,23 +61,23 @@ export class ShiftController {
 		@Body() payload: UpdateShiftDto
 	) {
 		const response = this.shiftService.update(id, payload);
-		return response;
+		// return response;
 
-		// return {
-		//     data: response,
-		//     message: `updated ${id}`,
-		// };
+		return {
+			data: response,
+			message: `El Jornada: ${id} se actualizo`,
+		};
 	}
 
 	@Delete(":id")
 	@HttpCode(HttpStatus.CREATED)
-	remove(@Param("id", ParseIntPipe) id: number) {
-		const response = this.shiftService.remove(id);
-		return response;
+	delete(@Param("id", ParseIntPipe) id: number) {
+		const response = this.shiftService.delete(id);
+		// return response;
 
-		// return {
-		//     data: response,
-		//     message: `deleted`,
-		// };
+		return {
+			data: response,
+			message: `El Jornada ${id} se eliminó correctamente.`,
+		};
 	}
 }

@@ -26,8 +26,8 @@ export class SubjectController {
 		// return response;
 
 		return {
-		    data: response,
-		    message: `Lista de materias`,
+			data: response,
+			message: `Lista de materias`,
 		};
 	}
 
@@ -38,8 +38,8 @@ export class SubjectController {
 		// return response;
 
 		return {
-		    data: response,
-		    message: `Materia ${id}`,
+			data: response,
+			message: `Materia ${id}`,
 		};
 	}
 
@@ -50,8 +50,8 @@ export class SubjectController {
 		// return response;
 
 		return {
-		    data: response,
-		    message: `Materia creada`,
+			data: response,
+			message: `Materia creada`,
 		};
 	}
 
@@ -65,8 +65,8 @@ export class SubjectController {
 		// return response;
 
 		return {
-		    data: response,
-		    message: `La materia ${id} se actualizo`,
+			data: response,
+			message: `La materia ${id} se actualizo`,
 		};
 	}
 
@@ -77,8 +77,8 @@ export class SubjectController {
 		// return response;
 
 		return {
-		    data: response,
-		    message: `La materia ${id} se elimino correctamente`,
+			data: response,
+			message: `La materia ${id} se eliminó correctamente.`,
 		};
 	}
 }

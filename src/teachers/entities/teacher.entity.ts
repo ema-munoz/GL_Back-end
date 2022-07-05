@@ -6,7 +6,7 @@ export class TeacherEntity {
 	id: number;
 
 	@Column()
-	identityCard: string;
+	identityCard: number;
 
 	@Column()
 	names: string;

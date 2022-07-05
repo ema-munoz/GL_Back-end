@@ -16,9 +16,6 @@ import { LabStateController } from "./lab_state_subject/lab_state.controller";
 import { LabStateService } from "./lab_state_subject/lab_state.service";
 import { ParallelController } from "./parallel/parallel.controller";
 import { ParallelService } from "./parallel/parallel.service";
-import { CareersModule } from "./careers/careers.module";
-import { DetailTeachersSubjectsModule } from "./detail_teachers_subjects/detail_teachers_subjects.module";
-import { LabotoryModule } from "./laboratories/laboratory.module";
 import { SemesterController } from "./semester/semester.controller";
 import { SemesterService } from "./semester/semester.service";
 import { ShiftController } from "./shifts/shift.controller";
@@ -27,12 +24,15 @@ import { SubjectController } from "./subjects/subject.controller";
 import { SubjectService } from "./subjects/subject.service";
 import { TeacherController } from "./teachers/teacher.controller";
 import { TeacherService } from "./teachers/teacher.service";
+//import { CareersModule } from "./careers/careers.module";
+//import { DetailTeachersSubjectsModule } from "./detail_teachers_subjects/detail_teachers_subjects.module";
+//import { LabotoryModule } from "./laboratories/laboratory.module";
 
 @Module({
 	imports: [
-		CareersModule,
-		DetailTeachersSubjectsModule,
-		LabotoryModule,
+		/* CareersModule,
+    DetailTeachersSubjectsModule,
+    LabotoryModule */
 	],
 
 	controllers: [

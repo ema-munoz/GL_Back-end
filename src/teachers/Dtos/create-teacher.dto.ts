@@ -12,8 +12,12 @@ export class CreateTeacherDto {
 	@IsNotEmpty() //El campo no este vacio
 	@IsNumber() //El campo es numerico
 	@IsPositive() //El campo sea positivo
-	@MaxLength(10) //Maximo de 10
-	@MinLength(10) //Minimo de 10
+	@MaxLength(10, {
+		message: "El número de cédula no puede tener más de 10 caracteres.",
+	}) //Maximo de 10
+	@MinLength(10, {
+		message: "El número de cédula no puede tener menos de 10 caracteres.",
+	}) //Minimo de 10
 	readonly identityCard: number;
 
 	@IsNotEmpty() //El campo no este vacio
@@ -31,7 +35,11 @@ export class CreateTeacherDto {
 	@IsNotEmpty() //El campo no este vacio
 	@IsNumber() //El campo es numerico
 	@IsPositive() //El campo sea positivo
-	@MaxLength(10) //Maximo de 10
-	@MinLength(10) //Minimo de 10
+	@MaxLength(10, {
+		message: "El número de cédula no puede tener más de 10 caracteres.",
+	}) //Maximo de 10
+	@MinLength(10, {
+		message: "El número de cédula no puede tener menos de 10 caracteres.",
+	}) //Minimo de 10
 	readonly cellPhone: number;
 }

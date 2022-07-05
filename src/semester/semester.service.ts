@@ -7,46 +7,51 @@ import { SemesterEntity } from "./entities/semester.entity";
 
 @Injectable()
 export class SemesterService {
-	constructor(
-		@InjectRepository(SemesterEntity)
-		private semesterRepository: Repository<SemesterEntity>
-	) {}
+	semesters: any[] = [];
+	id = 1;
 
-	async create(payload: CreateSemesterDto) {
-		const newSemester = this.semesterRepository.create(payload);
-		return await this.semesterRepository.save(newSemester);
+	// Busca a todos los Semestres.
+	findAll() {
+		return this.semesters;
 	}
 
-	async findAll() {
-		return await this.semesterRepository.find();
-	}
-
-	async findOne(id: number) {
-		const semester = await this.semesterRepository.findOne({
-			where: {
-				id: id,
-			},
-		});
-		if (semester === null) {
-			throw new NotFoundException("El laboratorio no se encontro");
+	// Busca a un Semestre.
+	findOne(id: number) {
+		const semester = this.semesters.find((semester) => semester.id == id);
+		if (semester == undefined) {
+			throw new NotFoundException("Semestre no encontrado");
 		}
 		return semester;
 	}
 
-	async remove(id: number) {
-		return await this.semesterRepository.delete(id);
+	// Crea a un Semestre.
+	create(payload: CreateSemesterDto) {
+		const data = {
+			id: this.id,
+			name: payload.name,
+		};
+		this.id++;
+		this.semesters.push(data);
+		return data;
 	}
 
-	async update(id: number, payload: UpdateSemesterDto) {
-		const semester = await this.semesterRepository.findOne({
-			where: {
-				id: id,
-			},
-		});
-		if (semester === null) {
-			throw new NotFoundException("El laboratorio no se encontro");
+	// Actualiza a un Semestre.
+	update(id: number, payload: UpdateSemesterDto) {
+		const index = this.semesters.findIndex((semester) => semester.id == id);
+		if (index == -1) {
+			throw new NotFoundException("Semestre no encontrado");
 		}
-		this.semesterRepository.merge(semester, payload);
-		return this.semesterRepository.save(semester);
+		this.semesters[index]["name"] = payload.name;
+		return this.semesters[index];
+	}
+
+	// Elimina a un Semestre.
+	delete(id: number) {
+		const index = this.semesters.findIndex((semester) => semester.id == id);
+		if (index == -1) {
+			throw new NotFoundException("Semestre no encontrado");
+		}
+		this.semesters.splice(index, 1);
+		return this.semesters;
 	}
 }

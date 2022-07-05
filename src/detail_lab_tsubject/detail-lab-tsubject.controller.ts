@@ -26,8 +26,8 @@ export class DetailLabTsubjectController {
 		// return response;
 
 		return {
-		    data: response,
-		    message: `Lista de los detalles`,
+			data: response,
+			message: `Lista de los detalles`,
 		};
 	}
 
@@ -38,8 +38,8 @@ export class DetailLabTsubjectController {
 		// return response;
 
 		return {
-		    data: response,
-		    message: `Detalle ${id}`,
+			data: response,
+			message: `Detalle ${id}`,
 		};
 	}
 
@@ -50,8 +50,8 @@ export class DetailLabTsubjectController {
 		// return response;
 
 		return {
-		    data: response,
-		    message: `Detalle creado`,
+			data: response,
+			message: `Detalle creado`,
 		};
 	}
 
@@ -65,8 +65,8 @@ export class DetailLabTsubjectController {
 		// return response;
 
 		return {
-		    data: response,
-		    message: `El detalle: ${id} se actualizo`,
+			data: response,
+			message: `El detalle: ${id} se actualizo`,
 		};
 	}
 
@@ -77,8 +77,8 @@ export class DetailLabTsubjectController {
 		// return response;
 
 		return {
-		    data: response,
-		    message: `El detalle ${id} se elimino correctamente`,
+			data: response,
+			message: `El detalle ${id} se eliminó correctamente.`,
 		};
 	}
 }

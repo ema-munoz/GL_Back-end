@@ -11,7 +11,6 @@ import {
 	Put,
 	Query,
 } from "@nestjs/common";
-
 import { CreateSemesterDto } from "src/semester/Dtos/create-semester.dto";
 import { UpdateSemesterDto } from "src/semester/Dtos/update-semester.dto";
 import { SemesterService } from "src/semester/semester.service";
@@ -23,36 +22,36 @@ export class SemesterController {
 	@HttpCode(HttpStatus.OK)
 	findAll(@Query() params: any) {
 		const response = this.semesterService.findAll();
-		return response;
+		// return response;
 
-		// return {
-		//     data: response,
-		//     message: `index`,
-		// };
+		return {
+			data: response,
+			message: `Lista de Semestres`,
+		};
 	}
 
 	@Get(":id")
 	@HttpCode(HttpStatus.OK)
 	findOne(@Param("id", ParseIntPipe) id: number) {
 		const response = this.semesterService.findOne(id);
-		return response;
+		// return response;
 
-		// return {
-		//     data: response,
-		//     message: `show`,
-		// };
+		return {
+			data: response,
+			message: `Semestre ${id}`,
+		};
 	}
 
 	@Post("")
 	@HttpCode(HttpStatus.CREATED)
 	create(@Body() payload: CreateSemesterDto) {
 		const response = this.semesterService.create(payload);
-		return response;
+		// return response;
 
-		// return {
-		//     data: response,
-		//     message: `created`,
-		// };
+		return {
+			data: response,
+			message: `Semestre creado`,
+		};
 	}
 
 	@Put(":id")
@@ -62,23 +61,23 @@ export class SemesterController {
 		@Body() payload: UpdateSemesterDto
 	) {
 		const response = this.semesterService.update(id, payload);
-		return response;
+		// return response;
 
-		// return {
-		//     data: response,
-		//     message: `updated ${id}`,
-		// };
+		return {
+			data: response,
+			message: `El Semestre: ${id} se actualizo`,
+		};
 	}
 
 	@Delete(":id")
 	@HttpCode(HttpStatus.CREATED)
-	remove(@Param("id", ParseIntPipe) id: number) {
-		const response = this.semesterService.remove(id);
-		return response;
+	delete(@Param("id", ParseIntPipe) id: number) {
+		const response = this.semesterService.delete(id);
+		// return response;
 
-		// return {
-		//     data: response,
-		//     message: `deleted`,
-		// };
+		return {
+			data: response,
+			message: `El Semestre ${id} se eliminó correctamente.`,
+		};
 	}
 }

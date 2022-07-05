@@ -16,7 +16,7 @@ import { UpdateLaboratoryDto } from "src/laboratories/Dtos/update-laboratory.dto
 import { LaboratoryService } from "src/laboratories/laboratory.service";
 @Controller("laboratory")
 export class LaboratoryController {
-	constructor(private laboratoryService: LaboratoryService) { }
+	constructor(private laboratoryService: LaboratoryService) {}
 
 	@Get("")
 	@HttpCode(HttpStatus.OK)
@@ -77,7 +77,7 @@ export class LaboratoryController {
 
 		return {
 			data: response,
-			message: `El laboratorio ${id} se elimino correctamente`,
+			message: `El laboratorio ${id} se eliminó correctamente.`,
 		};
 	}
 }

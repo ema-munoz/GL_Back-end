@@ -15,7 +15,9 @@ export class DetailLabTsubjectService {
 	}
 
 	findOne(id: number) {
-		const dtltSubject = this.dtltSubjects.find((dtltSubject) => dtltSubject.id == id);
+		const dtltSubject = this.dtltSubjects.find(
+			(dtltSubject) => dtltSubject.id == id
+		);
 		if (dtltSubject == undefined) {
 			throw new NotFoundException("Detalle no encontrado");
 		}
@@ -34,7 +36,9 @@ export class DetailLabTsubjectService {
 	}
 
 	update(id: number, payload: UpdateDetailLabTsubjectDto) {
-		const index = this.dtltSubjects.findIndex((dtltSubject) => dtltSubject.id == id);
+		const index = this.dtltSubjects.findIndex(
+			(dtltSubject) => dtltSubject.id == id
+		);
 		if (index == -1) {
 			throw new NotFoundException("Detalle no encontrado");
 		}
@@ -43,7 +47,9 @@ export class DetailLabTsubjectService {
 	}
 
 	delete(id: number) {
-		const index = this.dtltSubjects.findIndex((dtltSubject) => dtltSubject.id == id);
+		const index = this.dtltSubjects.findIndex(
+			(dtltSubject) => dtltSubject.id == id
+		);
 		if (index == -1) {
 			throw new NotFoundException("Detalle no encontrado");
 		}

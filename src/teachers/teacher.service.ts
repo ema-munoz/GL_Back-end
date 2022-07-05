@@ -1,52 +1,65 @@
 import { Injectable, NotFoundException } from "@nestjs/common";
-import { InjectRepository } from "@nestjs/typeorm";
+//import { InjectRepository } from "@nestjs/typeorm";
 import { CreateTeacherDto } from "src/teachers/Dtos/create-teacher.dto";
 import { UpdateTeacherDto } from "src/teachers/Dtos/update-teacher.dto";
-import { Repository } from "typeorm";
-import { TeacherEntity } from "./entities/teacher.entity";
+//import { Repository } from "typeorm";
+//import { TeacherEntity } from "./entities/teacher.entity";
 
 @Injectable()
 export class TeacherService {
-	constructor(
-		@InjectRepository(TeacherEntity)
-		private teacherRepository: Repository<TeacherEntity>
-	) {}
+	teachers: any[] = [];
+	id = 1;
 
-	async create(payload: CreateTeacherDto) {
-		const newTeacher = this.teacherRepository.create(payload);
-		return await this.teacherRepository.save(newTeacher);
+	// Busca a todos los Profesores.
+	findAll() {
+		return this.teachers;
 	}
 
-	async findAll() {
-		return await this.teacherRepository.find();
-	}
-
-	async findOne(id: number) {
-		const teacher = await this.teacherRepository.findOne({
-			where: {
-				id: id,
-			},
-		});
-		if (teacher === null) {
-			throw new NotFoundException("El laboratorio no se encontro");
+	// Busca a un Profesor.
+	findOne(id: number) {
+		const teacher = this.teachers.find((teacher) => teacher.id == id);
+		if (teacher == undefined) {
+			throw new NotFoundException("Profesor no encontrado");
 		}
 		return teacher;
 	}
 
-	async remove(id: number) {
-		return await this.teacherRepository.delete(id);
+	// Crea a un Profesor.
+	create(payload: CreateTeacherDto) {
+		const data = {
+			id: this.id,
+			identityCard: payload.identityCard,
+			names: payload.names,
+			lastNames: payload.lastNames,
+			institutionalMail: payload.institutionalMail,
+			cellPhone: payload.cellPhone,
+		};
+		this.id++;
+		this.teachers.push(data);
+		return data;
 	}
 
-	async update(id: number, payload: UpdateTeacherDto) {
-		const teacher = await this.teacherRepository.findOne({
-			where: {
-				id: id,
-			},
-		});
-		if (teacher === null) {
-			throw new NotFoundException("El laboratorio no se encontro");
+	// Actualiza a un Profesor.
+	update(id: number, payload: UpdateTeacherDto) {
+		const index = this.teachers.findIndex((teacher) => teacher.id == id);
+		if (index == -1) {
+			throw new NotFoundException("Profesor no encontrado");
 		}
-		this.teacherRepository.merge(teacher, payload);
-		return this.teacherRepository.save(teacher);
+		this.teachers[index]["identityCard"] = payload.identityCard;
+		this.teachers[index]["identityCard"] = payload.identityCard;
+		this.teachers[index]["lastNames"] = payload.lastNames;
+		this.teachers[index]["institutionalMail"] = payload.institutionalMail;
+		this.teachers[index]["institutionalMail"] = payload.institutionalMail;
+		return this.teachers[index];
+	}
+
+	// Elimina a un Profesor.
+	delete(id: number) {
+		const index = this.teachers.findIndex((teacher) => teacher.id == id);
+		if (index == -1) {
+			throw new NotFoundException("Profesor no encontrado");
+		}
+		this.teachers.splice(index, 1);
+		return this.teachers;
 	}
 }

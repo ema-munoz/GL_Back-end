@@ -22,33 +22,36 @@ export class TeacherController {
 	@HttpCode(HttpStatus.OK)
 	findAll(@Query() params: any) {
 		const response = this.teacherService.findAll();
-		return response;
-		// return {
-		//     data: response,
-		//     message: `index`,
-		// };
+		// return response;
+
+		return {
+			data: response,
+			message: `Lista de Profesores`,
+		};
 	}
 
 	@Get(":id")
 	@HttpCode(HttpStatus.OK)
 	findOne(@Param("id", ParseIntPipe) id: number) {
 		const response = this.teacherService.findOne(id);
-		return response;
-		// return {
-		//     data: response,
-		//     message: `show`,
-		// };
+		// return response;
+
+		return {
+			data: response,
+			message: `Profesor ${id}`,
+		};
 	}
 
 	@Post("")
 	@HttpCode(HttpStatus.CREATED)
 	create(@Body() payload: CreateTeacherDto) {
 		const response = this.teacherService.create(payload);
-		return response;
-		// return {
-		//     data: response,
-		//     message: `created`,
-		// };
+		// return response;
+
+		return {
+			data: response,
+			message: `Profesor creado`,
+		};
 	}
 
 	@Put(":id")
@@ -58,21 +61,23 @@ export class TeacherController {
 		@Body() payload: UpdateTeacherDto
 	) {
 		const response = this.teacherService.update(id, payload);
-		return response;
-		// return {
-		//     data: response,
-		//     message: `updated ${id}`,
-		// };
+		// return response;
+
+		return {
+			data: response,
+			message: `El Profesor: ${id} se actualizo`,
+		};
 	}
 
 	@Delete(":id")
 	@HttpCode(HttpStatus.CREATED)
-	remove(@Param("id", ParseIntPipe) id: number) {
-		const response = this.teacherService.remove(id);
-		return response;
-		// return {
-		//     data: response,
-		//     message: `deleted`,
-		// };
+	delete(@Param("id", ParseIntPipe) id: number) {
+		const response = this.teacherService.delete(id);
+		// return response;
+
+		return {
+			data: response,
+			message: `El Profesor ${id} se eliminó correctamente.`,
+		};
 	}
 }

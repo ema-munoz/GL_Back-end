@@ -15,7 +15,9 @@ export class LaboratoryService {
 	}
 
 	findOne(id: number) {
-		const laboratory = this.laboratories.find((laboratory) => laboratory.id == id);
+		const laboratory = this.laboratories.find(
+			(laboratory) => laboratory.id == id
+		);
 		if (laboratory == undefined) {
 			throw new NotFoundException("Laboratorio no encontrado");
 		}
@@ -36,7 +38,9 @@ export class LaboratoryService {
 	}
 
 	update(id: number, payload: UpdateLaboratoryDto) {
-		const index = this.laboratories.findIndex((laboratory) => laboratory.id == id);
+		const index = this.laboratories.findIndex(
+			(laboratory) => laboratory.id == id
+		);
 		if (index == -1) {
 			throw new NotFoundException("Laboratorio no encontrado");
 		}
@@ -47,7 +51,9 @@ export class LaboratoryService {
 	}
 
 	delete(id: number) {
-		const index = this.laboratories.findIndex((laboratory) => laboratory.id == id);
+		const index = this.laboratories.findIndex(
+			(laboratory) => laboratory.id == id
+		);
 		if (index == -1) {
 			throw new NotFoundException("Laboratorio no encontrado");
 		}

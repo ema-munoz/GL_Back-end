@@ -1,13 +1,15 @@
-import { IsString } from "class-validator";
-import { PartialType } from "@nestjs/mapped-types";
+import { IsNotEmpty, IsString } from "class-validator";
 
 export class CreateShiftDto {
-	@IsString()
+	@IsNotEmpty() //El campo no este vacio
+	@IsString() //El campo de texto
 	readonly name: string;
 
-	@IsString()
+	@IsNotEmpty() //El campo no este vacio
+	@IsString() //El campo de texto
 	readonly checkTime: string;
 
-	@IsString()
+	@IsNotEmpty() //El campo no este vacio
+	@IsString() //El campo de texto
 	readonly departureTime: string;
 }
