@@ -7,50 +7,54 @@ import { Paralelo } from "./entities/parallel.entity";
 
 @Injectable()
 export class ParallelService {
-	constructor(
-		@InjectRepository(Paralelo)
-		private parallelRepository: Repository<Paralelo>
-	) {}
+	parallel: any[] = [];
+	id = 1;
 
-	async create(payload: CreateParallelDto) {
-		const newParallel = this.parallelRepository.create(payload);
-		return await this.parallelRepository.save(newParallel);
+	findAll() {
+		return this.parallel;
 	}
 
-	async findAll() {
-		return await this.parallelRepository.find();
-	}
-
-	async findOne(id: number) {
-		const parallel = await this.parallelRepository.findOne({
-			where: {
-				id: id,
-			},
-		});
-		if (parallel === null) {
-			throw new NotFoundException(
-				"El estado del laboratorio no se encontro"
-			);
+	findOne(id: number) {
+		const parallel = this.parallel.find(
+			(parallel) => parallel.id == id
+		);
+		if (parallel == undefined) {
+			throw new NotFoundException("Paralelo no encontrado");
 		}
+
 		return parallel;
 	}
 
-	async remove(id: number) {
-		return await this.parallelRepository.delete(id);
+	create(payload: CreateParallelDto) {
+		const data = {
+			id: this.id,
+			name: payload.name,
+		};
+		this.id++;
+		this.parallel.push(data);
+		return data;
 	}
 
-	async update(id: number, payload: UpdateParallelDto) {
-		const parallel = await this.parallelRepository.findOne({
-			where: {
-				id: id,
-			},
-		});
-		if (parallel === null) {
-			throw new NotFoundException(
-				"El estado del laboratorio no se encontro"
-			);
+	update(id: number, payload: UpdateParallelDto) {
+		const index = this.parallel.findIndex(
+			(parallel) => parallel.id == id
+		);
+		if (index == -1) {
+			throw new NotFoundException("Paralelo no encontrado");
 		}
-		this.parallelRepository.merge(parallel, payload);
-		return this.parallelRepository.save(parallel);
+		this.parallel[index]["name"] = payload.name;
+		return this.parallel[index];
+	}
+
+	delete(id: number) {
+		const index = this.parallel.findIndex(
+			(parallel) => parallel.id == id
+		);
+		if (index == -1) {
+			throw new NotFoundException("Paralelo no encontrado");
+		}
+		this.parallel.splice(index, 1);
+		return this.parallel;
 	}
 }
+

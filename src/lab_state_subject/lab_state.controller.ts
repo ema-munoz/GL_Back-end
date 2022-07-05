@@ -22,36 +22,36 @@ export class LabStateController {
 	@HttpCode(HttpStatus.OK)
 	findAll(@Query() params: any) {
 		const response = this.labStateService.findAll();
-		return response;
+		// return response;
 
-		// return {
-		//     data: response,
-		//     message: `index`,
-		// };
+		return {
+			data: response,
+			message: `Lista de laboratorios`,
+		};
 	}
 
 	@Get(":id")
 	@HttpCode(HttpStatus.OK)
 	findOne(@Param("id", ParseIntPipe) id: number) {
 		const response = this.labStateService.findOne(id);
-		return response;
+		// return response;
 
-		// return {
-		//     data: response,
-		//     message: `show`,
-		// };
+		return {
+			data: response,
+			message: `Estado Laboratorio ${id}`,
+		};
 	}
 
 	@Post("")
 	@HttpCode(HttpStatus.CREATED)
 	create(@Body() payload: CreateLabStateDto) {
 		const response = this.labStateService.create(payload);
-		return response;
+		// return response;
 
-		// return {
-		//     data: response,
-		//     message: `created`,
-		// };
+		return {
+			data: response,
+			message: `Estado de Laboratorio creado`,
+		};
 	}
 
 	@Put(":id")
@@ -61,23 +61,23 @@ export class LabStateController {
 		@Body() payload: UpdateLabStateDto
 	) {
 		const response = this.labStateService.update(id, payload);
-		return response;
+		// return response;
 
-		// return {
-		//     data: response,
-		//     message: `updated ${id}`,
-		// };
+		return {
+			data: response,
+			message: `El estado laboratorio: ${id} se actualizo`,
+		};
 	}
 
 	@Delete(":id")
 	@HttpCode(HttpStatus.CREATED)
-	remove(@Param("id", ParseIntPipe) id: number) {
-		const response = this.labStateService.remove(id);
-		return response;
+	delete(@Param("id", ParseIntPipe) id: number) {
+		const response = this.labStateService.delete(id);
+		// return response;
 
-		// return {
-		//     data: response,
-		//     message: `deleted`,
-		// };
+		return {
+			data: response,
+			message: `El estado de laboratorio ${id} se eliminó correctamente.`,
+		};
 	}
 }

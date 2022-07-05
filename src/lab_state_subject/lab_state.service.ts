@@ -7,46 +7,56 @@ import { EstadoLaboratorio } from "./entities/lab_state.entity";
 
 @Injectable()
 export class LabStateService {
-	constructor(
-		@InjectRepository(EstadoLaboratorio)
-		private labStateRepository: Repository<EstadoLaboratorio>
-	) {}
+	labState: any[] = [];
+	id = 1;
 
-	async create(payload: CreateLabStateDto) {
-		const newLabState = this.labStateRepository.create(payload);
-		return await this.labStateRepository.save(newLabState);
+	findAll() {
+		return this.labState;
 	}
 
-	async findAll() {
-		return await this.labStateRepository.find();
-	}
-
-	async findOne(id: number) {
-		const labState = await this.labStateRepository.findOne({
-			where: {
-				id: id,
-			},
-		});
-		if (labState === null) {
-			throw new NotFoundException("El laboratorio no se encontro");
+	findOne(id: number) {
+		const labState = this.labState.find(
+			(labState) => labState.id == id
+		);
+		if (labState == undefined) {
+			throw new NotFoundException("Laboratorio no encontrado");
 		}
+
 		return labState;
 	}
 
-	async remove(id: number) {
-		return await this.labStateRepository.delete(id);
+	create(payload: CreateLabStateDto) {
+		const data = {
+			id: this.id,
+			state: payload.state,
+			observations: payload.observations
+			
+		};
+		this.id++;
+		this.labState.push(data);
+		return data;
 	}
 
-	async update(id: number, payload: UpdateLabStateDto) {
-		const labState = await this.labStateRepository.findOne({
-			where: {
-				id: id,
-			},
-		});
-		if (labState === null) {
-			throw new NotFoundException("El laboratorio no se encontro");
+	update(id: number, payload: UpdateLabStateDto) {
+		const index = this.labState.findIndex(
+			(labState) => labState.id == id
+		);
+		if (index == -1) {
+			throw new NotFoundException("Estado de Laboratorio no encontrado");
 		}
-		this.labStateRepository.merge(labState, payload);
-		return this.labStateRepository.save(labState);
+		this.labState[index]["state"] = payload.state;
+		this.labState[index]["observations"] = payload.observations;
+		return this.labState[index];
+	}
+
+	delete(id: number) {
+		const index = this.labState.findIndex(
+			(labState) => labState.id == id
+		);
+		if (index == -1) {
+			throw new NotFoundException("Estado de Laboratorio no encontrado");
+		}
+		this.labState.splice(index, 1);
+		return this.labState;
 	}
 }
