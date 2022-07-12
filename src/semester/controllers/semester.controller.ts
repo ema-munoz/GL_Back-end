@@ -14,7 +14,7 @@ import {
 import { CreateSemesterDto } from "../Dtos/create-semester.dto";
 import { UpdateSemesterDto } from "../Dtos/update-semester.dto";
 import { SemesterService } from "../services/semester.service";
-@Controller("semester")
+@Controller("semesters")
 export class SemesterController {
 	constructor(private semesterService: SemesterService) {}
 

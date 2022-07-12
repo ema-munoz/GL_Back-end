@@ -15,7 +15,7 @@ import { CreateDetailTeacherSubjectDto } from "../Dtos/create-detail_teacher_sub
 import { UpdateDetailTeacherSubject } from "../Dtos/update-detail_teacher_subject.dto";
 import { DetailTeacherSubjectService } from "../services/detail_teacher_subject.service";
 
-@Controller("detail-teacher-subject")
+@Controller("detail-teacher-subjects")
 export class DetailTeacherSubjectController {
 	constructor(
 		private detailTeacherSubjectService: DetailTeacherSubjectService
@@ -25,7 +25,7 @@ export class DetailTeacherSubjectController {
 	@HttpCode(HttpStatus.OK)
 	index(@Query() params: any) {
 		const response =
-			this.detailTeacherSubjectService.getAll();
+			this.detailTeacherSubjectService.findAll();
 
 		return {
 			data: response,
@@ -46,7 +46,7 @@ export class DetailTeacherSubjectController {
 	@HttpCode(HttpStatus.OK)
 	show(@Param("id", ParseIntPipe) id: number) {
 		const response =
-			this.detailTeacherSubjectService.getOne(id);
+			this.detailTeacherSubjectService.findOne(id);
 		return {
 			data: response,
 			message: `Detalle docente_asignatura ${id}`,

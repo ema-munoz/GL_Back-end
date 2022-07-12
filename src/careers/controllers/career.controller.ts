@@ -22,7 +22,7 @@ export class CareerController {
 	@Get("")
 	@HttpCode(HttpStatus.OK)
 	index(@Query() params: any) {
-		const response = this.careerService.getAll();
+		const response = this.careerService.findAll();
 
 		return {
 			data: response,
@@ -42,7 +42,7 @@ export class CareerController {
 	@Get(":id")
 	@HttpCode(HttpStatus.OK)
 	show(@Param("id", ParseIntPipe) id: number) {
-		const response = this.careerService.getOne(id);
+		const response = this.careerService.findOne(id);
 		return {
 			data: response,
 			message: `Carrera ${id}`,

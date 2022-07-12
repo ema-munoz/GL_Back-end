@@ -22,10 +22,10 @@ export class SemesterService {
 
 	// Busca a un Semestre.
 	findOne(id: number) {
-		const semester = this.semesterRepo.find(
-			(semester) => semester.id == id
-		);
-		if (semester == undefined) {
+		const semester = this.semesterRepo.findOne({
+			where: { id: id },
+		});
+		if (semester == null) {
 			throw new NotFoundException(
 				"Semestre no encontrado"
 			);

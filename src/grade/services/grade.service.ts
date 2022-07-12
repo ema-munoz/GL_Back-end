@@ -5,12 +5,12 @@ import { UpdateGradeDto } from "../Dtos/update-grade.dto";
 @Injectable()
 export class GradeService {
 	// Busca todos los cursos.
-	getAll() {
+	findAll() {
 		throw new Error("Method not implemented.");
 	}
 
 	// Busca un curso.
-	getOne(id: number) {
+	findOne(id: number) {
 		throw new Error("Method not implemented.");
 	}
 

@@ -21,7 +21,7 @@ export class CareerService {
 	}
 
 	// Busca a una Carrera.
-	async getOne(id: number) {
+	async findOne(id: number) {
 		const career = this.careerRepo.findOne({
 			where: { id: id },
 		});
