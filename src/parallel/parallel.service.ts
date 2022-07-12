@@ -1,50 +1,50 @@
 import { Injectable, NotFoundException } from "@nestjs/common";
 import { CreateParallelDto } from "src/parallel/Dtos/create-parallel.dto";
 import { UpdateParallelDto } from "src/parallel/Dtos/update-parallel.dto";
+import { InjectRepository } from "@nestjs/typeorm";
+import { Repository } from "typeorm";
+import { ParallelEntity } from "./entities/parallel.entity";
 
 @Injectable()
 export class ParallelService {
-	parallel: any[] = [];
-	id = 1;
-
-	findAll() {
-		return this.parallel;
+	constructor(
+        @InjectRepository(ParallelEntity) private parallelRepo: Repository<ParallelEntity>,
+    ) { }
+	// Busca a todos los Paralelo.
+	async findAll() {
+		return await this.parallelRepo;
 	}
 
-	findOne(id: number) {
-		const parallel = this.parallel.find((parallel) => parallel.id == id);
-		if (parallel == undefined) {
+	// Busca a un Paralelo.
+	async findOne(id: number) {
+		const parallel = await this.parallelRepo.findOne(
+			{
+				where: {id:id}
+			}
+		)
+		if (parallel == null) {
 			throw new NotFoundException("Paralelo no encontrado");
 		}
-
 		return parallel;
 	}
 
+	// Crea a un Paralelo.
 	create(payload: CreateParallelDto) {
-		const data = {
-			id: this.id,
-			name: payload.name,
-		};
-		this.id++;
-		this.parallel.push(data);
-		return data;
+		const newParallel = this.parallelRepo.create(payload);
+		return this.parallelRepo.save(newParallel);
 	}
 
-	update(id: number, payload: UpdateParallelDto) {
-		const index = this.parallel.findIndex((parallel) => parallel.id == id);
-		if (index == -1) {
-			throw new NotFoundException("Paralelo no encontrado");
-		}
-		this.parallel[index]["name"] = payload.name;
-		return this.parallel[index];
-	}
+	// Actualiza a un Paralelo.
+	async update(id: number, payload: UpdateParallelDto) {
+        const parallel = await this.parallelRepo.findOne({ where: {id:id}});
+        if (parallel === null) {
+            throw new NotFoundException('Paralelo no encontrado');
+        }
+        this.parallelRepo.merge(parallel, payload);
+        return this.parallelRepo.save(parallel);
+    }
 
-	delete(id: number) {
-		const index = this.parallel.findIndex((parallel) => parallel.id == id);
-		if (index == -1) {
-			throw new NotFoundException("Paralelo no encontrado");
-		}
-		this.parallel.splice(index, 1);
-		return this.parallel;
-	}
+    delete(id: number) {
+        return this.parallelRepo.delete(id);
+    }
 }

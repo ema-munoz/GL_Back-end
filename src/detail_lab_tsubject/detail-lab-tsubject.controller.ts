@@ -15,7 +15,7 @@ import { CreateDetailLabTsubjectDto } from "src/detail_lab_tsubject/Dtos/create-
 import { UpdateDetailLabTsubjectDto } from "src/detail_lab_tsubject/Dtos/update-detail-tsubject.dto";
 import { DetailLabTsubjectService } from "src/detail_lab_tsubject/detail-lab-tsubject.service";
 
-@Controller("detail-lab-tsubject")
+@Controller("detail-lab-tsubjects")
 export class DetailLabTsubjectController {
 	constructor(private detailLabTsubjectService: DetailLabTsubjectService) {}
 

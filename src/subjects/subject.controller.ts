@@ -15,7 +15,7 @@ import { CreateSubjectDto } from "src/subjects/Dtos/create-subject.dto";
 import { UpdateSubjectDto } from "src/subjects/Dtos/update-subject.dto";
 import { SubjectService } from "src/subjects/subject.service";
 
-@Controller("subject")
+@Controller("subjects")
 export class SubjectController {
 	constructor(private subjectService: SubjectService) {}
 

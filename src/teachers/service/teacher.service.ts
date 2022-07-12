@@ -35,7 +35,9 @@ export class TeacherService {
 
 	// Actualiza a un Profesor.
 	async update(id: number, payload: UpdateTeacherDto) {
-		const teacher = await this.teacherRepo.findOne({ where: { id: id } });
+		const teacher = await this.teacherRepo.findOne({
+			where: { id: id },
+		});
 		if (teacher === null) {
 			throw new NotFoundException("Docente no encontrado");
 		}

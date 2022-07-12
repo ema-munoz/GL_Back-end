@@ -1,55 +1,53 @@
 import { Injectable, NotFoundException } from "@nestjs/common";
+import { InjectRepository } from "@nestjs/typeorm";
 import { CreateCareerDto } from "src/careers/dtos/create-career.dto";
 import { UpdateCareerDto } from "src/careers/dtos/update-career.dto";
+import { Repository } from "typeorm";
+import { CareerEntity } from "../entities/career.entity";
 
 @Injectable()
 export class CareerService {
-	careers: any[] = [];
-	id = 1;
+	constructor(
+		@InjectRepository(CareerEntity)
+		private careerRepo: Repository<CareerEntity>
+	) {}
 
-	getAll() {
-		return this.careers;
+	// Busca a todos las Carreras.
+	async findAll() {
+		return await this.careerRepo;
 	}
 
-	getOne(id: number) {
-		const career = this.careers.find((career) => career.id == id);
-		if (career == undefined) {
-			throw new NotFoundException("Carrera no encontrada");
+	// Busca a una Carrera.
+	async getOne(id: number) {
+		const career = this.careerRepo.findOne({
+			where: { id: id },
+		});
+		if (career == null) {
+			throw new NotFoundException("La Carrera no fue encontrada.");
 		}
-
 		return career;
 	}
 
-	filter(search: string) {
-		const career = this.careers.filter((career) => career.name == search);
-		return career;
-	}
-
+	// Crea a una Carrera.
 	create(payload: CreateCareerDto) {
-		const data = {
-			id: this.id,
-			name: payload.name,
-		};
-		this.id++;
-		this.careers.push(data);
-		return data;
+		const newCarrer = this.careerRepo.create(payload);
+		return this.careerRepo.save(newCarrer);
 	}
 
-	update(id: number, payload: UpdateCareerDto) {
-		const index = this.careers.findIndex((career) => career.id == id);
-		if (index == -1) {
-			throw new NotFoundException("Carrera no encontrada");
+	// Actualiza a una Carrera.
+	async update(id: number, payload: UpdateCareerDto) {
+		const career = await this.careerRepo.findOne({
+			where: { id: id },
+		});
+		if (career === null) {
+			throw new NotFoundException("La Carrera no fue encontrada.");
 		}
-		this.careers[index]["name"] = payload.name;
-		return this.careers[index];
+		this.careerRepo.merge(career, payload);
+		return this.careerRepo.save(career);
 	}
 
+	// Elimina a una Carrera.
 	delete(id: number) {
-		const index = this.careers.findIndex((career) => career.id == id);
-		if (index == -1) {
-			throw new NotFoundException("Carrera no encontrado");
-		}
-		this.careers.splice(index, 1);
-		return this.careers;
+		return this.careerRepo.delete(id);
 	}
 }

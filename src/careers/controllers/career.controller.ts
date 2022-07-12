@@ -15,7 +15,7 @@ import { CreateCareerDto } from "src/careers/dtos/create-career.dto";
 import { UpdateCareerDto } from "src/careers/dtos/update-career.dto";
 import { CareerService } from "src/careers/services/career.service";
 
-@Controller("career")
+@Controller("careers")
 export class CareerController {
 	constructor(private careerService: CareerService) {}
 
@@ -26,7 +26,7 @@ export class CareerController {
 
 		return {
 			data: response,
-			message: `Lista de Carreras`,
+			message: `Lista de Carreras.`,
 		};
 	}
 

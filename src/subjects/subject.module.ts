@@ -5,6 +5,7 @@ import { SubjectController } from "./subject.controller";
 import { SubjectService } from "./subject.service";
 
 @Module({
+	imports: [TypeOrmModule.forFeature([SubjectEntity])],
 	controllers: [SubjectController],
 	providers: [SubjectService],
 	exports: [SubjectService],

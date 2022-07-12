@@ -14,7 +14,7 @@ import {
 import { CreateLabStateDto } from "src/lab_state_subject/Dtos/create-lab_state.dto";
 import { UpdateLabStateDto } from "src/lab_state_subject/Dtos/update-lab_state.dto";
 import { LabStateService } from "src/lab_state_subject/lab_state.service";
-@Controller("lab-state")
+@Controller("lab-states")
 export class LabStateController {
 	constructor(private labStateService: LabStateService) {}
 
