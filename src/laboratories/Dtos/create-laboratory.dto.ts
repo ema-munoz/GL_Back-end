@@ -1,4 +1,10 @@
-import { IsNumber, IsString, MaxLength, Min, MinLength } from "class-validator";
+import {
+	IsNumber,
+	IsString,
+	MaxLength,
+	Min,
+	MinLength,
+} from "class-validator";
 
 export class CreateLaboratoryDto {
 	@IsString()

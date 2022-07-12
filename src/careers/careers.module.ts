@@ -1,11 +1,11 @@
 import { Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
-import { TeacherEntity } from "src/teachers/entities/teacher.entity";
 import { CareerController } from "./controllers/career.controller";
+import { CareerEntity } from "./entities/career.entity";
 import { CareerService } from "./services/career.service";
 
 @Module({
-	imports: [TypeOrmModule.forFeature([TeacherEntity])],
+	imports: [TypeOrmModule.forFeature([CareerEntity])],
 	controllers: [CareerController],
 	providers: [CareerService],
 	exports: [CareerService],

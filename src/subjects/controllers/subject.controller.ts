@@ -11,9 +11,9 @@ import {
 	Put,
 	Query,
 } from "@nestjs/common";
-import { CreateSubjectDto } from "src/subjects/Dtos/create-subject.dto";
-import { UpdateSubjectDto } from "src/subjects/Dtos/update-subject.dto";
-import { SubjectService } from "src/subjects/subject.service";
+import { CreateSubjectDto } from "../Dtos/create-subject.dto";
+import { UpdateSubjectDto } from "../Dtos/update-subject.dto";
+import { SubjectService } from "../services/subject.service";
 
 @Controller("subjects")
 export class SubjectController {
@@ -46,7 +46,8 @@ export class SubjectController {
 	@Post("")
 	@HttpCode(HttpStatus.CREATED)
 	create(@Body() payload: CreateSubjectDto) {
-		const response = this.subjectService.create(payload);
+		const response =
+			this.subjectService.create(payload);
 		// return response;
 
 		return {
@@ -61,7 +62,10 @@ export class SubjectController {
 		@Param("id", ParseIntPipe) id: number,
 		@Body() payload: UpdateSubjectDto
 	) {
-		const response = this.subjectService.update(id, payload);
+		const response = this.subjectService.update(
+			id,
+			payload
+		);
 		// return response;
 
 		return {

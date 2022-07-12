@@ -11,18 +11,21 @@ import {
 	Put,
 	Query,
 } from "@nestjs/common";
-import { CreateDetailLabTsubjectDto } from "src/detail_lab_tsubject/Dtos/create-detail-tsubject.dto";
-import { UpdateDetailLabTsubjectDto } from "src/detail_lab_tsubject/Dtos/update-detail-tsubject.dto";
-import { DetailLabTsubjectService } from "src/detail_lab_tsubject/detail-lab-tsubject.service";
+import { CreateDetailLabTsubjectDto } from "../Dtos/create-detail-tsubject.dto";
+import { UpdateDetailLabTsubjectDto } from "../Dtos/update-detail-tsubject.dto";
+import { DetailLabTsubjectService } from "../services/detail-lab-tsubject.service";
 
 @Controller("detail-lab-tsubjects")
 export class DetailLabTsubjectController {
-	constructor(private detailLabTsubjectService: DetailLabTsubjectService) {}
+	constructor(
+		private detailLabTsubjectService: DetailLabTsubjectService
+	) {}
 
 	@Get("")
 	@HttpCode(HttpStatus.OK)
 	findAll(@Query() params: any) {
-		const response = this.detailLabTsubjectService.findAll();
+		const response =
+			this.detailLabTsubjectService.findAll();
 		// return response;
 
 		return {
@@ -34,7 +37,8 @@ export class DetailLabTsubjectController {
 	@Get(":id")
 	@HttpCode(HttpStatus.OK)
 	findOne(@Param("id", ParseIntPipe) id: number) {
-		const response = this.detailLabTsubjectService.findOne(id);
+		const response =
+			this.detailLabTsubjectService.findOne(id);
 		// return response;
 
 		return {
@@ -46,7 +50,8 @@ export class DetailLabTsubjectController {
 	@Post("")
 	@HttpCode(HttpStatus.CREATED)
 	create(@Body() payload: CreateDetailLabTsubjectDto) {
-		const response = this.detailLabTsubjectService.create(payload);
+		const response =
+			this.detailLabTsubjectService.create(payload);
 		// return response;
 
 		return {
@@ -61,7 +66,11 @@ export class DetailLabTsubjectController {
 		@Param("id", ParseIntPipe) id: number,
 		@Body() payload: UpdateDetailLabTsubjectDto
 	) {
-		const response = this.detailLabTsubjectService.update(id, payload);
+		const response =
+			this.detailLabTsubjectService.update(
+				id,
+				payload
+			);
 		// return response;
 
 		return {
@@ -73,7 +82,8 @@ export class DetailLabTsubjectController {
 	@Delete(":id")
 	@HttpCode(HttpStatus.CREATED)
 	delete(@Param("id", ParseIntPipe) id: number) {
-		const response = this.detailLabTsubjectService.delete(id);
+		const response =
+			this.detailLabTsubjectService.delete(id);
 		// return response;
 
 		return {

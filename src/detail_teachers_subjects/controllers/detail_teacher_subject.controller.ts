@@ -11,9 +11,9 @@ import {
 	Put,
 	Query,
 } from "@nestjs/common";
-import { CreateDetailTeacherSubjectDto } from "src/detail_teachers_subjects/dtos/create-detail_teacher_subject.dto";
-import { UpdateDetailTeacherSubject } from "src/detail_teachers_subjects/dtos/update-detail_teacher_subject.dto";
-import { DetailTeacherSubjectService } from "src/detail_teachers_subjects/services/detail_teacher_subject.service";
+import { CreateDetailTeacherSubjectDto } from "../Dtos/create-detail_teacher_subject.dto";
+import { UpdateDetailTeacherSubject } from "../Dtos/update-detail_teacher_subject.dto";
+import { DetailTeacherSubjectService } from "../services/detail_teacher_subject.service";
 
 @Controller("detail-teacher-subject")
 export class DetailTeacherSubjectController {
@@ -24,7 +24,8 @@ export class DetailTeacherSubjectController {
 	@Get("")
 	@HttpCode(HttpStatus.OK)
 	index(@Query() params: any) {
-		const response = this.detailTeacherSubjectService.getAll();
+		const response =
+			this.detailTeacherSubjectService.getAll();
 
 		return {
 			data: response,
@@ -44,7 +45,8 @@ export class DetailTeacherSubjectController {
 	@Get(":id")
 	@HttpCode(HttpStatus.OK)
 	show(@Param("id", ParseIntPipe) id: number) {
-		const response = this.detailTeacherSubjectService.getOne(id);
+		const response =
+			this.detailTeacherSubjectService.getOne(id);
 		return {
 			data: response,
 			message: `Detalle docente_asignatura ${id}`,
@@ -54,7 +56,10 @@ export class DetailTeacherSubjectController {
 	@Post("")
 	@HttpCode(HttpStatus.CREATED)
 	store(@Body() payload: CreateDetailTeacherSubjectDto) {
-		const response = this.detailTeacherSubjectService.create(payload);
+		const response =
+			this.detailTeacherSubjectService.create(
+				payload
+			);
 		return {
 			data: response,
 			message: `Detalle docente_asignatura creada`,
@@ -67,7 +72,11 @@ export class DetailTeacherSubjectController {
 		@Param("id", ParseIntPipe) id: number,
 		@Body() payload: UpdateDetailTeacherSubject
 	) {
-		const response = this.detailTeacherSubjectService.update(id, payload);
+		const response =
+			this.detailTeacherSubjectService.update(
+				id,
+				payload
+			);
 		return {
 			data: response,
 			message: `Actualizado detalle docente_asignatura ${id}`,
@@ -77,7 +86,8 @@ export class DetailTeacherSubjectController {
 	@Delete(":id")
 	@HttpCode(HttpStatus.OK)
 	destroy(@Param("id", ParseIntPipe) id: number) {
-		const response = this.detailTeacherSubjectService.delete(id);
+		const response =
+			this.detailTeacherSubjectService.delete(id);
 		return {
 			data: response,
 			message: `Eliminado correctamente detalle docente_asignatura ${id}`,

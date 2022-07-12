@@ -11,9 +11,9 @@ import {
 	Put,
 	Query,
 } from "@nestjs/common";
-import { CreateLabStateDto } from "src/lab_state_subject/Dtos/create-lab_state.dto";
-import { UpdateLabStateDto } from "src/lab_state_subject/Dtos/update-lab_state.dto";
-import { LabStateService } from "src/lab_state_subject/lab_state.service";
+import { CreateLabStateDto } from "../Dtos/create-lab_state.dto";
+import { UpdateLabStateDto } from "../Dtos/update-lab_state.dto";
+import { LabStateService } from "../services/lab_state.service";
 @Controller("lab-states")
 export class LabStateController {
 	constructor(private labStateService: LabStateService) {}
@@ -45,7 +45,8 @@ export class LabStateController {
 	@Post("")
 	@HttpCode(HttpStatus.CREATED)
 	create(@Body() payload: CreateLabStateDto) {
-		const response = this.labStateService.create(payload);
+		const response =
+			this.labStateService.create(payload);
 		// return response;
 
 		return {
@@ -60,7 +61,10 @@ export class LabStateController {
 		@Param("id", ParseIntPipe) id: number,
 		@Body() payload: UpdateLabStateDto
 	) {
-		const response = this.labStateService.update(id, payload);
+		const response = this.labStateService.update(
+			id,
+			payload
+		);
 		// return response;
 
 		return {

@@ -1,8 +1,11 @@
 import { Module } from "@nestjs/common";
-import { SemesterController } from "./controller/semester.controller";
-import { SemesterService } from "./service/semester.service";
+import { TypeOrmModule } from "@nestjs/typeorm";
+import { SemesterController } from "./controllers/semester.controller";
+import { SemesterEntity } from "./entities/semester.entity";
+import { SemesterService } from "./services/semester.service";
 
 @Module({
+	imports: [TypeOrmModule.forFeature([SemesterEntity])],
 	controllers: [SemesterController],
 	providers: [SemesterService],
 	exports: [SemesterService],

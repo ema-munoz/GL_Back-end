@@ -11,9 +11,9 @@ import {
 	Put,
 	Query,
 } from "@nestjs/common";
-import { CreateShiftDto } from "src/shifts/Dtos/create-shift.dto";
-import { UpdateShiftDto } from "src/shifts/Dtos/update-shift.dto";
-import { ShiftService } from "src/shifts/service/shift.service";
+import { CreateShiftDto } from "../Dtos/create-shift.dto";
+import { UpdateShiftDto } from "../Dtos/update-shift.dto";
+import { ShiftService } from "../services/shift.service";
 @Controller("shift")
 export class ShiftController {
 	constructor(private shiftService: ShiftService) {}
@@ -60,7 +60,10 @@ export class ShiftController {
 		@Param("id", ParseIntPipe) id: number,
 		@Body() payload: UpdateShiftDto
 	) {
-		const response = this.shiftService.update(id, payload);
+		const response = this.shiftService.update(
+			id,
+			payload
+		);
 		// return response;
 
 		return {

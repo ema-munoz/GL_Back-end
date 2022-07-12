@@ -11,9 +11,9 @@ import {
 	Put,
 	Query,
 } from "@nestjs/common";
-import { CreateTeacherDto } from "src/teachers/Dtos/create-teacher.dto";
-import { UpdateTeacherDto } from "src/teachers/Dtos/update-teacher.dto";
-import { TeacherService } from "src/teachers/teacher.service";
+import { CreateTeacherDto } from "../Dtos/create-teacher.dto";
+import { UpdateTeacherDto } from "../Dtos/update-teacher.dto";
+import { TeacherService } from "../services/teacher.service";
 @Controller("teachers")
 export class TeacherController {
 	constructor(private teacherService: TeacherService) {}
@@ -45,7 +45,8 @@ export class TeacherController {
 	@Post("")
 	@HttpCode(HttpStatus.CREATED)
 	create(@Body() payload: CreateTeacherDto) {
-		const response = this.teacherService.create(payload);
+		const response =
+			this.teacherService.create(payload);
 		// return response;
 
 		return {
@@ -60,7 +61,10 @@ export class TeacherController {
 		@Param("id", ParseIntPipe) id: number,
 		@Body() payload: UpdateTeacherDto
 	) {
-		const response = this.teacherService.update(id, payload);
+		const response = this.teacherService.update(
+			id,
+			payload
+		);
 		// return response;
 
 		return {

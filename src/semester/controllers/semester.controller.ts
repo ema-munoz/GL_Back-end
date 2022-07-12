@@ -11,9 +11,9 @@ import {
 	Put,
 	Query,
 } from "@nestjs/common";
-import { CreateSemesterDto } from "src/semester/Dtos/create-semester.dto";
-import { UpdateSemesterDto } from "src/semester/Dtos/update-semester.dto";
-import { SemesterService } from "src/semester/service/semester.service";
+import { CreateSemesterDto } from "../Dtos/create-semester.dto";
+import { UpdateSemesterDto } from "../Dtos/update-semester.dto";
+import { SemesterService } from "../services/semester.service";
 @Controller("semester")
 export class SemesterController {
 	constructor(private semesterService: SemesterService) {}
@@ -45,7 +45,8 @@ export class SemesterController {
 	@Post("")
 	@HttpCode(HttpStatus.CREATED)
 	create(@Body() payload: CreateSemesterDto) {
-		const response = this.semesterService.create(payload);
+		const response =
+			this.semesterService.create(payload);
 		// return response;
 
 		return {
@@ -60,7 +61,10 @@ export class SemesterController {
 		@Param("id", ParseIntPipe) id: number,
 		@Body() payload: UpdateSemesterDto
 	) {
-		const response = this.semesterService.update(id, payload);
+		const response = this.semesterService.update(
+			id,
+			payload
+		);
 		// return response;
 
 		return {

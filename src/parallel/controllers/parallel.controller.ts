@@ -11,9 +11,9 @@ import {
 	Put,
 	Query,
 } from "@nestjs/common";
-import { ParallelService } from "src/parallel/parallel.service";
-import { CreateParallelDto } from "src/parallel/Dtos/create-parallel.dto";
-import { UpdateParallelDto } from "src/parallel/Dtos/update-parallel.dto";
+import { ParallelService } from "../services/parallel.service";
+import { CreateParallelDto } from "../Dtos/create-parallel.dto";
+import { UpdateParallelDto } from "../Dtos/update-parallel.dto";
 @Controller("parallels")
 export class ParallelController {
 	constructor(private parallelService: ParallelService) {}
@@ -45,7 +45,8 @@ export class ParallelController {
 	@Post("")
 	@HttpCode(HttpStatus.CREATED)
 	create(@Body() payload: CreateParallelDto) {
-		const response = this.parallelService.create(payload);
+		const response =
+			this.parallelService.create(payload);
 		// return response;
 
 		return {
@@ -60,7 +61,10 @@ export class ParallelController {
 		@Param("id", ParseIntPipe) id: number,
 		@Body() payload: UpdateParallelDto
 	) {
-		const response = this.parallelService.update(id, payload);
+		const response = this.parallelService.update(
+			id,
+			payload
+		);
 		// return response;
 
 		return {

@@ -1,75 +1,74 @@
-import { Injectable, NotFoundException } from "@nestjs/common";
-import { CreateDetailTeacherSubjectDto } from "src/detail_teachers_subjects/dtos/create-detail_teacher_subject.dto";
-import { UpdateDetailTeacherSubject } from "src/detail_teachers_subjects/dtos/update-detail_teacher_subject.dto";
+/* eslint-disable prettier/prettier */
+import {
+	Injectable,
+	NotFoundException,
+} from "@nestjs/common";
+import { InjectRepository } from "@nestjs/typeorm";
+import { CreateDetailTeacherSubjectDto } from "../Dtos/create-detail_teacher_subject.dto";
+import { UpdateDetailTeacherSubject } from "../Dtos/update-detail_teacher_subject.dto";
+import { Repository } from "typeorm";
+import { DetailTeacherSubjectEntity } from "../entities/detail_teacher_subject.entity";
 
 @Injectable()
 export class DetailTeacherSubjectService {
-	detailTeachersSubjects: any[] = [];
-	id = 1;
+	constructor(
+		@InjectRepository(DetailTeacherSubjectEntity)
+		private detailTeachersSubjectRepo: Repository<DetailTeacherSubjectEntity>
+	) {}
 
-	getAll() {
-		return this.detailTeachersSubjects;
+	// Busca a todos los Detalles de Profesores y Materias.
+	async findAll() {
+		return await this.detailTeachersSubjectRepo;
 	}
 
-	getOne(id: number) {
-		const teacherSubject = this.detailTeachersSubjects.find(
-			(teacherSubject) => teacherSubject.id == id
-		);
-		if (teacherSubject == undefined) {
+	// Busca a un Detalles de Profesor y Materias.
+	async findOne(id: number) {
+		const teacherSubject =
+			await this.detailTeachersSubjectRepo.findOne({
+				where: { id: id },
+			});
+		if (teacherSubject === null) {
 			throw new NotFoundException(
 				"Detalle docente_asignatura no encontrada"
 			);
 		}
-
 		return teacherSubject;
 	}
 
-	filter(search: string) {
-		const teacherSubject = this.detailTeachersSubjects.filter(
-			(teacherSubject) => teacherSubject.date == search
-		);
-		return teacherSubject;
-	}
-
+	// Crea a un Detalles de Profesor y Materias.
 	create(payload: CreateDetailTeacherSubjectDto) {
-		const data = {
-			id: this.id,
-			date: payload.date,
-			day: payload.day,
-			hourStart: payload.hourStart,
-			hourFinish: payload.hourFinish,
-		};
-		this.id++;
-		this.detailTeachersSubjects.push(data);
-		return data;
+		const newTeacher =
+			this.detailTeachersSubjectRepo.create(payload);
+		return this.detailTeachersSubjectRepo.save(
+			newTeacher
+		);
 	}
 
-	update(id: number, payload: UpdateDetailTeacherSubject) {
-		const index = this.detailTeachersSubjects.findIndex(
-			(teacherSubject) => teacherSubject.id == id
-		);
-		if (index == -1) {
+	// Actualiza a un Detalles de Profesor y Materias.
+	async update(
+		id: number,
+		payload: UpdateDetailTeacherSubject
+	) {
+		const teacherSubject =
+			await this.detailTeachersSubjectRepo.findOne({
+				where: { id: id },
+			});
+		if (teacherSubject === null) {
 			throw new NotFoundException(
 				"Detalle docente_asignatura no encontrada"
 			);
 		}
-		this.detailTeachersSubjects[index]["date"] = payload.date;
-		this.detailTeachersSubjects[index]["day"] = payload.day;
-		this.detailTeachersSubjects[index]["hourStart"] = payload.hourStart;
-		this.detailTeachersSubjects[index]["hourFinish"] = payload.hourFinish;
-		return this.detailTeachersSubjects[index];
+		this.detailTeachersSubjectRepo.merge(
+			teacherSubject,
+			payload
+		);
+		return this.detailTeachersSubjectRepo.save(
+			teacherSubject
+		);
 	}
 
+	// Elimina a un Detalles de Profesor y Materias.
 	delete(id: number) {
-		const index = this.detailTeachersSubjects.findIndex(
-			(teacherSubject) => teacherSubject.id == id
-		);
-		if (index == -1) {
-			throw new NotFoundException(
-				"Detalle docente_asignatura no encontrado"
-			);
-		}
-		this.detailTeachersSubjects.splice(index, 1);
-		return this.detailTeachersSubjects;
+		return this.detailTeachersSubjectRepo.delete(id);
 	}
 }

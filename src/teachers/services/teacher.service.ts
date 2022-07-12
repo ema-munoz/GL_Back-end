@@ -1,9 +1,12 @@
-import { Injectable, NotFoundException } from "@nestjs/common";
+import {
+	Injectable,
+	NotFoundException,
+} from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
-import { CreateTeacherDto } from "src/teachers/Dtos/create-teacher.dto";
-import { UpdateTeacherDto } from "src/teachers/Dtos/update-teacher.dto";
+import { CreateTeacherDto } from "../Dtos/create-teacher.dto";
+import { UpdateTeacherDto } from "../Dtos/update-teacher.dto";
 import { Repository } from "typeorm";
-import { TeacherEntity } from "./entities/teacher.entity";
+import { TeacherEntity } from "../entities/teacher.entity";
 
 @Injectable()
 export class TeacherService {
@@ -22,7 +25,9 @@ export class TeacherService {
 			where: { id: id },
 		});
 		if (teacher == null) {
-			throw new NotFoundException("Profesor no encontrado");
+			throw new NotFoundException(
+				"Profesor no encontrado"
+			);
 		}
 		return teacher;
 	}
@@ -39,7 +44,9 @@ export class TeacherService {
 			where: { id: id },
 		});
 		if (teacher === null) {
-			throw new NotFoundException("Docente no encontrado");
+			throw new NotFoundException(
+				"Docente no encontrado"
+			);
 		}
 		this.teacherRepo.merge(teacher, payload);
 		return this.teacherRepo.save(teacher);

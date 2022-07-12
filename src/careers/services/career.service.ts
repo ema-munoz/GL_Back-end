@@ -1,7 +1,10 @@
-import { Injectable, NotFoundException } from "@nestjs/common";
+import {
+	Injectable,
+	NotFoundException,
+} from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
-import { CreateCareerDto } from "src/careers/dtos/create-career.dto";
-import { UpdateCareerDto } from "src/careers/dtos/update-career.dto";
+import { CreateCareerDto } from "../Dtos/create-career.dto";
+import { UpdateCareerDto } from "../Dtos/update-career.dto";
 import { Repository } from "typeorm";
 import { CareerEntity } from "../entities/career.entity";
 
@@ -23,7 +26,9 @@ export class CareerService {
 			where: { id: id },
 		});
 		if (career == null) {
-			throw new NotFoundException("La Carrera no fue encontrada.");
+			throw new NotFoundException(
+				"La Carrera no fue encontrada."
+			);
 		}
 		return career;
 	}
@@ -40,7 +45,9 @@ export class CareerService {
 			where: { id: id },
 		});
 		if (career === null) {
-			throw new NotFoundException("La Carrera no fue encontrada.");
+			throw new NotFoundException(
+				"La Carrera no fue encontrada."
+			);
 		}
 		this.careerRepo.merge(career, payload);
 		return this.careerRepo.save(career);

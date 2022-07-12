@@ -11,9 +11,9 @@ import {
 	Put,
 	Query,
 } from "@nestjs/common";
-import { CreateCareerDto } from "src/careers/dtos/create-career.dto";
-import { UpdateCareerDto } from "src/careers/dtos/update-career.dto";
-import { CareerService } from "src/careers/services/career.service";
+import { CreateCareerDto } from "../Dtos/create-career.dto";
+import { UpdateCareerDto } from "../Dtos/update-career.dto";
+import { CareerService } from "../services/career.service";
 
 @Controller("careers")
 export class CareerController {
@@ -65,7 +65,10 @@ export class CareerController {
 		@Param("id", ParseIntPipe) id: number,
 		@Body() payload: UpdateCareerDto
 	) {
-		const response = this.careerService.update(id, payload);
+		const response = this.careerService.update(
+			id,
+			payload
+		);
 		return {
 			data: response,
 			message: `Actualizado correctamente carrera ${id}`,

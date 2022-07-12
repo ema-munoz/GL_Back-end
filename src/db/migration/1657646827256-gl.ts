@@ -3,7 +3,9 @@ import { MigrationInterface, QueryRunner } from "typeorm";
 export class gl1657648676888 implements MigrationInterface {
 	name = "gl1657648676888";
 
-	public async up(queryRunner: QueryRunner): Promise<void> {
+	public async up(
+		queryRunner: QueryRunner
+	): Promise<void> {
 		await queryRunner.query(
 			`CREATE TABLE "career_entity" ("id" SERIAL NOT NULL, "name" character varying NOT NULL, CONSTRAINT "PK_57a772065a9ebbad8e667326d00" PRIMARY KEY ("id"))`
 		);
@@ -39,17 +41,41 @@ export class gl1657648676888 implements MigrationInterface {
 		);
 	}
 
-	public async down(queryRunner: QueryRunner): Promise<void> {
-		await queryRunner.query(`DROP TABLE "shift_entity"`);
-		await queryRunner.query(`DROP TABLE "teacher_entity"`);
-		await queryRunner.query(`DROP TABLE "subject_entity"`);
-		await queryRunner.query(`DROP TABLE "detail_teacher_subject_entity"`);
-		await queryRunner.query(`DROP TABLE "lab_state_entity"`);
-		await queryRunner.query(`DROP TABLE "semester_entity"`);
-		await queryRunner.query(`DROP TABLE "parallel_entity"`);
-		await queryRunner.query(`DROP TABLE "laboratory_entity"`);
-		await queryRunner.query(`DROP TABLE "grade_entity"`);
-		await queryRunner.query(`DROP TABLE "detail_lab_tsubject_entity"`);
-		await queryRunner.query(`DROP TABLE "career_entity"`);
+	public async down(
+		queryRunner: QueryRunner
+	): Promise<void> {
+		await queryRunner.query(
+			`DROP TABLE "shift_entity"`
+		);
+		await queryRunner.query(
+			`DROP TABLE "teacher_entity"`
+		);
+		await queryRunner.query(
+			`DROP TABLE "subject_entity"`
+		);
+		await queryRunner.query(
+			`DROP TABLE "detail_teacher_subject_entity"`
+		);
+		await queryRunner.query(
+			`DROP TABLE "lab_state_entity"`
+		);
+		await queryRunner.query(
+			`DROP TABLE "semester_entity"`
+		);
+		await queryRunner.query(
+			`DROP TABLE "parallel_entity"`
+		);
+		await queryRunner.query(
+			`DROP TABLE "laboratory_entity"`
+		);
+		await queryRunner.query(
+			`DROP TABLE "grade_entity"`
+		);
+		await queryRunner.query(
+			`DROP TABLE "detail_lab_tsubject_entity"`
+		);
+		await queryRunner.query(
+			`DROP TABLE "career_entity"`
+		);
 	}
 }
