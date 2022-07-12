@@ -1,52 +1,50 @@
 import { Injectable, NotFoundException } from "@nestjs/common";
 import { CreateLabStateDto } from "src/lab_state_subject/Dtos/create-lab_state.dto";
 import { UpdateLabStateDto } from "src/lab_state_subject/Dtos/update-lab_state.dto";
+import { Repository } from "typeorm";
+import { LabStateEntity } from "./entities/lab_state.entity";
+import { InjectRepository } from "@nestjs/typeorm";
 
 @Injectable()
 export class LabStateService {
-	labState: any[] = [];
-	id = 1;
-
-	findAll() {
-		return this.labState;
+	constructor(
+        @InjectRepository(LabStateEntity) private labStateRepo: Repository<LabStateEntity>,
+    ) { }
+	// Busca a todos los Estados Laboratorios.
+	async findAll() {
+		return await this.labStateRepo;
 	}
 
-	findOne(id: number) {
-		const labState = this.labState.find((labState) => labState.id == id);
-		if (labState == undefined) {
-			throw new NotFoundException("Laboratorio no encontrado");
+	// Busca a un Estados Laboratorios.
+	async findOne(id: number) {
+		const labState = await this.labStateRepo.findOne(
+			{
+				where: {id:id}
+			}
+		)
+		if (labState == null) {
+			throw new NotFoundException("Profesor no Estados Laboratorios");
 		}
-
 		return labState;
 	}
 
+	// Crea a un Estados Laboratorios.
 	create(payload: CreateLabStateDto) {
-		const data = {
-			id: this.id,
-			state: payload.state,
-			observations: payload.observations,
-		};
-		this.id++;
-		this.labState.push(data);
-		return data;
+		const newLabState = this.labStateRepo.create(payload);
+		return this.labStateRepo.save(newLabState);
 	}
 
-	update(id: number, payload: UpdateLabStateDto) {
-		const index = this.labState.findIndex((labState) => labState.id == id);
-		if (index == -1) {
-			throw new NotFoundException("Estado de Laboratorio no encontrado");
-		}
-		this.labState[index]["state"] = payload.state;
-		this.labState[index]["observations"] = payload.observations;
-		return this.labState[index];
-	}
+	// Actualiza a un Estados Laboratorios
+	async update(id: number, payload: UpdateLabStateDto) {
+        const labState = await this.labStateRepo.findOne({ where: {id:id}});
+        if (labState === null) {
+            throw new NotFoundException('Estados Laboratorios no encontrado');
+        }
+        this.labStateRepo.merge(labState, payload);
+        return this.labStateRepo.save(labState);
+    }
 
-	delete(id: number) {
-		const index = this.labState.findIndex((labState) => labState.id == id);
-		if (index == -1) {
-			throw new NotFoundException("Estado de Laboratorio no encontrado");
-		}
-		this.labState.splice(index, 1);
-		return this.labState;
-	}
+    delete(id: number) {
+        return this.labStateRepo.delete(id);
+    }
 }

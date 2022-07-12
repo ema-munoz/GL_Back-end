@@ -14,7 +14,7 @@ import {
 import { CreateLaboratoryDto } from "src/laboratories/Dtos/create-laboratory.dto";
 import { UpdateLaboratoryDto } from "src/laboratories/Dtos/update-laboratory.dto";
 import { LaboratoryService } from "src/laboratories/laboratory.service";
-@Controller("laboratory")
+@Controller("laboratories")
 export class LaboratoryController {
 	constructor(private laboratoryService: LaboratoryService) {}
 

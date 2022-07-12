@@ -5,6 +5,7 @@ import { LaboratoryController } from "./laboratory.controller";
 import { LaboratoryService } from "./laboratory.service";
 
 @Module({
+	imports: [TypeOrmModule.forFeature([LaboratoryEntity])],
 	controllers: [LaboratoryController],
 	providers: [LaboratoryService],
 	exports: [LaboratoryService],

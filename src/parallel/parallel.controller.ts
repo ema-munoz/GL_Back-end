@@ -14,7 +14,7 @@ import {
 import { ParallelService } from "src/parallel/parallel.service";
 import { CreateParallelDto } from "src/parallel/Dtos/create-parallel.dto";
 import { UpdateParallelDto } from "src/parallel/Dtos/update-parallel.dto";
-@Controller("parallel")
+@Controller("parallels")
 export class ParallelController {
 	constructor(private parallelService: ParallelService) {}
 
@@ -26,7 +26,7 @@ export class ParallelController {
 
 		return {
 			data: response,
-			message: `Lista de laboratorios`,
+			message: `Lista de Paralelos`,
 		};
 	}
 
