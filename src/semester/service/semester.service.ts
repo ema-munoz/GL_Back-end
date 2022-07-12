@@ -1,9 +1,6 @@
 import { Injectable, NotFoundException } from "@nestjs/common";
-import { InjectRepository } from "@nestjs/typeorm";
 import { CreateSemesterDto } from "src/semester/Dtos/create-semester.dto";
 import { UpdateSemesterDto } from "src/semester/Dtos/update-semester.dto";
-import { Repository } from "typeorm";
-import { SemesterEntity } from "./entities/semester.entity";
 
 @Injectable()
 export class SemesterService {

@@ -13,7 +13,7 @@ import {
 } from "@nestjs/common";
 import { CreateSemesterDto } from "src/semester/Dtos/create-semester.dto";
 import { UpdateSemesterDto } from "src/semester/Dtos/update-semester.dto";
-import { SemesterService } from "src/semester/semester.service";
+import { SemesterService } from "src/semester/service/semester.service";
 @Controller("semester")
 export class SemesterController {
 	constructor(private semesterService: SemesterService) {}

@@ -1,8 +1,6 @@
 import { Module } from "@nestjs/common";
-import { TypeOrmModule } from "@nestjs/typeorm";
-import { SemesterEntity } from "./entities/semester.entity";
-import { SemesterController } from "./semester.controller";
-import { SemesterService } from "./semester.service";
+import { SemesterController } from "./controller/semester.controller";
+import { SemesterService } from "./service/semester.service";
 
 @Module({
 	controllers: [SemesterController],

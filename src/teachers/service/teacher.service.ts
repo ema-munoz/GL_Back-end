@@ -1,9 +1,6 @@
 import { Injectable, NotFoundException } from "@nestjs/common";
-//import { InjectRepository } from "@nestjs/typeorm";
 import { CreateTeacherDto } from "src/teachers/Dtos/create-teacher.dto";
 import { UpdateTeacherDto } from "src/teachers/Dtos/update-teacher.dto";
-//import { Repository } from "typeorm";
-//import { TeacherEntity } from "./entities/teacher.entity";
 
 @Injectable()
 export class TeacherService {

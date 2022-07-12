@@ -1,9 +1,6 @@
 import { Injectable, NotFoundException } from "@nestjs/common";
-//import { InjectRepository } from "@nestjs/typeorm";
 import { CreateShiftDto } from "src/shifts/Dtos/create-shift.dto";
 import { UpdateShiftDto } from "src/shifts/Dtos/update-shift.dto";
-//import { Repository } from "typeorm";
-//import { ShiftEntity } from "./entities/shift.entity";
 
 @Injectable()
 export class ShiftService {
@@ -19,7 +16,7 @@ export class ShiftService {
 	findOne(id: number) {
 		const shift = this.shifts.find((shift) => shift.id == id);
 		if (shift == undefined) {
-			throw new NotFoundException("Jornada no encontrado");
+			throw new NotFoundException("Jornada no encontrada.");
 		}
 		return shift;
 	}
@@ -41,7 +38,7 @@ export class ShiftService {
 	update(id: number, payload: UpdateShiftDto) {
 		const index = this.shifts.findIndex((shift) => shift.id == id);
 		if (index == -1) {
-			throw new NotFoundException("Jornada no encontrado");
+			throw new NotFoundException("Jornada no encontrada.");
 		}
 		this.shifts[index]["name"] = payload.name;
 		this.shifts[index]["checkTime"] = payload.checkTime;
@@ -53,7 +50,7 @@ export class ShiftService {
 	delete(id: number) {
 		const index = this.shifts.findIndex((shift) => shift.id == id);
 		if (index == -1) {
-			throw new NotFoundException("Jornada no encontrado");
+			throw new NotFoundException("Jornada no encontrada.");
 		}
 		this.shifts.splice(index, 1);
 		return this.shifts;

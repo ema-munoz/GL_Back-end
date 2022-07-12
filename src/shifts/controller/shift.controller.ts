@@ -13,7 +13,7 @@ import {
 } from "@nestjs/common";
 import { CreateShiftDto } from "src/shifts/Dtos/create-shift.dto";
 import { UpdateShiftDto } from "src/shifts/Dtos/update-shift.dto";
-import { ShiftService } from "src/shifts/shift.service";
+import { ShiftService } from "src/shifts/service/shift.service";
 @Controller("shift")
 export class ShiftController {
 	constructor(private shiftService: ShiftService) {}
