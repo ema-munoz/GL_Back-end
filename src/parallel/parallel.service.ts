@@ -1,9 +1,6 @@
 import { Injectable, NotFoundException } from "@nestjs/common";
-import { InjectRepository } from "@nestjs/typeorm";
 import { CreateParallelDto } from "src/parallel/Dtos/create-parallel.dto";
 import { UpdateParallelDto } from "src/parallel/Dtos/update-parallel.dto";
-import { Repository } from "typeorm";
-import { Paralelo } from "./entities/parallel.entity";
 
 @Injectable()
 export class ParallelService {

@@ -1,17 +1,19 @@
-// import "reflect-metadata";
-// import { DataSource } from "typeorm";
+import "reflect-metadata";
+import { DataSource } from "typeorm";
 
-// export const AppDataSource = new DataSource({
-// 	type: "postgres",
-// 	host: "localhost",
-// 	port: 5432,
-// 	username: "postgres",
-// 	password: "...",
-// 	database: "Gestion_Laboratorios",
-// 	synchronize: false,
-// 	logging: false,
-// 	entities: ["src/entity/*.entity.ts"],
-// 	migrations: ["src/migration/*.ts"],
-// 	subscribers: ["src/subscribers/*.ts"],
-// 	migrationsTableName: "migrations",
-// });
+const config = new DataSource({
+	type: "postgres",
+	host: "localhost",
+	port: 5432,
+	username: "postgres",
+	password: "fernando654cris",
+	database: "Gestion_Laboratorios",
+    synchronize: true,
+    logging: false,
+    entities: ["./src/**/*.entity.ts"],
+    subscribers: [],
+    migrationsTableName: "migration",
+    migrations: ["src/db/migration/*.ts"],
+});
+
+export default config;

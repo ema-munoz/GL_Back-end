@@ -1,13 +1,11 @@
 import { Injectable, NotFoundException } from "@nestjs/common";
-import { InjectRepository } from "@nestjs/typeorm";
 import { CreateLaboratoryDto } from "src/laboratories/Dtos/create-laboratory.dto";
 import { UpdateLaboratoryDto } from "src/laboratories/Dtos/update-laboratory.dto";
-import { Repository } from "typeorm";
 import { LaboratoryEntity } from "./entities/laboratory.entity";
 
 @Injectable()
 export class LaboratoryService {
-	laboratories: any[] = [];
+	laboratories: LaboratoryEntity[] = [];
 	id = 1;
 
 	findAll() {
@@ -21,33 +19,32 @@ export class LaboratoryService {
 		if (laboratory == undefined) {
 			throw new NotFoundException("Laboratorio no encontrado");
 		}
-
 		return laboratory;
 	}
 
 	create(payload: CreateLaboratoryDto) {
-		const data = {
+		const newLaboratory = {
 			id: this.id,
-			name: payload.name,
-			capacity: payload.capacity,
-			description: payload.description,
+			...payload
 		};
-		this.id++;
-		this.laboratories.push(data);
-		return data;
+		this.id++
+		this.laboratories.push(newLaboratory)
+		return newLaboratory;
 	}
 
 	update(id: number, payload: UpdateLaboratoryDto) {
+		const laboratory = this.findOne(id);
 		const index = this.laboratories.findIndex(
 			(laboratory) => laboratory.id == id
 		);
-		if (index == -1) {
+		if(index == -1){
 			throw new NotFoundException("Laboratorio no encontrado");
 		}
-		this.laboratories[index]["name"] = payload.name;
-		this.laboratories[index]["capacity"] = payload.capacity;
-		this.laboratories[index]["description"] = payload.description;
-		return this.laboratories[index];
+		this.laboratories[index] = {
+			...laboratory,
+			...payload,
+		};
+		return this.laboratories[index]
 	}
 
 	delete(id: number) {

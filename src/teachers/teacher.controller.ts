@@ -14,7 +14,7 @@ import {
 import { CreateTeacherDto } from "src/teachers/Dtos/create-teacher.dto";
 import { UpdateTeacherDto } from "src/teachers/Dtos/update-teacher.dto";
 import { TeacherService } from "src/teachers/teacher.service";
-@Controller("teacher")
+@Controller("teachers")
 export class TeacherController {
 	constructor(private teacherService: TeacherService) {}
 
