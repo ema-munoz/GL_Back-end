@@ -1,21 +1,27 @@
 import { Injectable, NotFoundException } from "@nestjs/common";
+import { InjectRepository } from "@nestjs/typeorm";
 import { CreateTeacherDto } from "src/teachers/Dtos/create-teacher.dto";
 import { UpdateTeacherDto } from "src/teachers/Dtos/update-teacher.dto";
+import { Repository } from "typeorm";
+import { TeacherEntity } from "./entities/teacher.entity";
 
 @Injectable()
 export class TeacherService {
-	teachers: any[] = [];
-	id = 1;
-
+	constructor(
+		@InjectRepository(TeacherEntity)
+		private teacherRepo: Repository<TeacherEntity>
+	) {}
 	// Busca a todos los Profesores.
-	findAll() {
-		return this.teachers;
+	async findAll() {
+		return await this.teacherRepo;
 	}
 
 	// Busca a un Profesor.
-	findOne(id: number) {
-		const teacher = this.teachers.find((teacher) => teacher.id == id);
-		if (teacher == undefined) {
+	async findOne(id: number) {
+		const teacher = await this.teacherRepo.findOne({
+			where: { id: id },
+		});
+		if (teacher == null) {
 			throw new NotFoundException("Profesor no encontrado");
 		}
 		return teacher;
@@ -23,40 +29,21 @@ export class TeacherService {
 
 	// Crea a un Profesor.
 	create(payload: CreateTeacherDto) {
-		const data = {
-			id: this.id,
-			identityCard: payload.identityCard,
-			names: payload.names,
-			lastNames: payload.lastNames,
-			institutionalMail: payload.institutionalMail,
-			cellPhone: payload.cellPhone,
-		};
-		this.id++;
-		this.teachers.push(data);
-		return data;
+		const newTeacher = this.teacherRepo.create(payload);
+		return this.teacherRepo.save(newTeacher);
 	}
 
 	// Actualiza a un Profesor.
-	update(id: number, payload: UpdateTeacherDto) {
-		const index = this.teachers.findIndex((teacher) => teacher.id == id);
-		if (index == -1) {
-			throw new NotFoundException("Profesor no encontrado");
+	async update(id: number, payload: UpdateTeacherDto) {
+		const teacher = await this.teacherRepo.findOne({ where: { id: id } });
+		if (teacher === null) {
+			throw new NotFoundException("Docente no encontrado");
 		}
-		this.teachers[index]["identityCard"] = payload.identityCard;
-		this.teachers[index]["identityCard"] = payload.identityCard;
-		this.teachers[index]["lastNames"] = payload.lastNames;
-		this.teachers[index]["institutionalMail"] = payload.institutionalMail;
-		this.teachers[index]["institutionalMail"] = payload.institutionalMail;
-		return this.teachers[index];
+		this.teacherRepo.merge(teacher, payload);
+		return this.teacherRepo.save(teacher);
 	}
 
-	// Elimina a un Profesor.
 	delete(id: number) {
-		const index = this.teachers.findIndex((teacher) => teacher.id == id);
-		if (index == -1) {
-			throw new NotFoundException("Profesor no encontrado");
-		}
-		this.teachers.splice(index, 1);
-		return this.teachers;
+		return this.teacherRepo.delete(id);
 	}
 }

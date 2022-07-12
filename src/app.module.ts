@@ -12,9 +12,21 @@ import { DetailLabTsubjectModule } from "./detail_lab_tsubject/detail_lab_tsubje
 import { ShiftModule } from "./shifts/shift.module";
 import { SemesterModule } from "./semester/semester.module";
 import { TeacherModule } from "./teachers/teacher.module";
+import { TypeOrmModule } from "@nestjs/typeorm";
 
 @Module({
 	imports: [
+		TypeOrmModule.forRoot({
+			type: "postgres",
+			host: "localhost",
+			port: 5432,
+			username: "postgres",
+			password: "fernando654cris",
+			database: "Gestion_Laboratorios",
+			synchronize: true,
+			logging: true,
+			autoLoadEntities: true,
+		}),
 		CareersModule,
 		DetailTeachersSubjectsModule,
 		GradeModule,

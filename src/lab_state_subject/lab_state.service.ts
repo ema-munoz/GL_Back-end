@@ -1,9 +1,6 @@
 import { Injectable, NotFoundException } from "@nestjs/common";
-import { InjectRepository } from "@nestjs/typeorm";
 import { CreateLabStateDto } from "src/lab_state_subject/Dtos/create-lab_state.dto";
 import { UpdateLabStateDto } from "src/lab_state_subject/Dtos/update-lab_state.dto";
-import { Repository } from "typeorm";
-import { EstadoLaboratorio } from "./entities/lab_state.entity";
 
 @Injectable()
 export class LabStateService {

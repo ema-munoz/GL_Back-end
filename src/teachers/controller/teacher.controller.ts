@@ -13,8 +13,8 @@ import {
 } from "@nestjs/common";
 import { CreateTeacherDto } from "src/teachers/Dtos/create-teacher.dto";
 import { UpdateTeacherDto } from "src/teachers/Dtos/update-teacher.dto";
-import { TeacherService } from "src/teachers/service/teacher.service";
-@Controller("teacher")
+import { TeacherService } from "src/teachers/teacher.service";
+@Controller("teachers")
 export class TeacherController {
 	constructor(private teacherService: TeacherService) {}
 
