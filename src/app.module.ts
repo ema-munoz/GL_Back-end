@@ -22,7 +22,7 @@ import { TypeOrmModule } from "@nestjs/typeorm";
 			port: 5432,
 			username: "postgres",
 			//Solo descomentar la con su contraseña y no borrar
-			//password: "fernando654cris", //Cris
+			password: "fernando654cris", //Cris
 			//password: "Barbarita19@2021@", //Emily
 			//password: "...", //Jenny
 			//password: "...", //Jona

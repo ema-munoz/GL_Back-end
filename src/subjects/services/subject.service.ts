@@ -17,18 +17,18 @@ export class SubjectService {
 
 	// Busca a todos las Materias.
 	async findAll() {
-		return await this.subjectRepo;
+		return await this.subjectRepo.find();
 	}
 
 	// Busca a una Materia.
 	async findOne(id: number) {
-		const subject = await this.subjectRepo.findOne({
-			where: { id: id },
-		});
+		const subject = await this.subjectRepo.findOne(
+			{
+				where: { id: id },
+			}
+		);
 		if (subject == null) {
-			throw new NotFoundException(
-				"Profesor no encontrado"
-			);
+			throw new NotFoundException("Asignatura no encontrada");
 		}
 		return subject;
 	}
@@ -41,9 +41,11 @@ export class SubjectService {
 
 	// Actualiza a una Materia
 	async update(id: number, payload: UpdateSubjectDto) {
-		const subject = await this.subjectRepo.findOne({
-			where: { id: id },
-		});
+		const subject = await this.subjectRepo.findOne(
+			{
+				where: { id: id },
+			}
+		);
 		if (subject === null) {
 			throw new NotFoundException(
 				"Materia no encontrado"
