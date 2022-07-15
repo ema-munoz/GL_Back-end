@@ -42,4 +42,8 @@ export class CreateTeacherDto {
 	// 	message: "El número de telofono no puede tener menos de 10 caracteres.",
 	// }) //Minimo de 10
 	readonly cellPhone: number;
+
+	@IsNotEmpty()
+	@IsString()
+	readonly professionalGrade: string;
 }

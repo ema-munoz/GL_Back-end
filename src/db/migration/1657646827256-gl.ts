@@ -34,7 +34,7 @@ export class gl1657648676888 implements MigrationInterface {
 			`CREATE TABLE "subject_entity" ("id" SERIAL NOT NULL, "name" character varying NOT NULL, CONSTRAINT "PK_734a0e904b21f0008952e5848bb" PRIMARY KEY ("id"))`
 		);
 		await queryRunner.query(
-			`CREATE TABLE "teacher_entity" ("id" SERIAL NOT NULL, "identityCard" integer NOT NULL, "names" character varying NOT NULL, "lastNames" character varying NOT NULL, "institutionalMail" character varying NOT NULL, "cellPhone" integer NOT NULL, CONSTRAINT "PK_9173049f8e2a88465932a277584" PRIMARY KEY ("id"))`
+			`CREATE TABLE "teacher_entity" ("id" SERIAL NOT NULL, "identityCard" integer NOT NULL, "names" character varying NOT NULL, "lastNames" character varying NOT NULL, "institutionalMail" character varying NOT NULL, "cellPhone" integer NOT NULL, "professionalGrade" character varying NOT NULL, CONSTRAINT "PK_9173049f8e2a88465932a277584" PRIMARY KEY ("id"))`
 		);
 		await queryRunner.query(
 			`CREATE TABLE "shift_entity" ("id" SERIAL NOT NULL, "name" character varying NOT NULL, "checkTime" character varying NOT NULL, "departureTime" character varying NOT NULL, CONSTRAINT "PK_18a6a2641880d86c57f824fe5ac" PRIMARY KEY ("id"))`

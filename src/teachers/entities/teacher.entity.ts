@@ -23,4 +23,7 @@ export class TeacherEntity {
 
 	@Column()
 	cellPhone: number;
+
+	@Column()
+	professionalGrade: string;
 }
